@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -58,6 +59,14 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
-        return redirect()->route('admin.login');
+        $notification=array(
+            'messege'=>'Successfully Logout',
+            'alert-type'=>'success'
+        );
+        return Redirect()->route('admin.login')->with($notification);
     }
+
+
+
+
 }
