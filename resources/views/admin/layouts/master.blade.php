@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
 
     <!-- Global stylesheets -->
@@ -14,23 +15,10 @@
     <link href="{{asset("public/backend/assets/css/layout.min.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("public/backend/assets/css/components.min.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("public/backend/assets/css/colors.min.css")}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- /global stylesheets -->
 
-    <!-- Core JS files -->
-    <script src="{{asset('public/backend/assets/global/js/main/jquery.min.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/main/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/plugins/loaders/blockui.min.js')}}"></script>
-    <!-- /core JS files -->
 
-    <!-- Theme JS files -->
-    <script src="{{asset('public/backend/assets/global/js/plugins/visualization/d3/d3.min.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/plugins/forms/styling/switchery.min.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/plugins/ui/moment/moment.min.js')}}"></script>
-    <script src="{{asset('public/backend/assets/global/js/plugins/pickers/daterangepicker.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <script src="{{asset('public/backend/assets/js/app.js')}}"></script>
-    <!-- /theme JS files -->
 
 </head>
 
@@ -121,6 +109,29 @@
 
 </div>
 <!-- /page content -->
+
+
+@section('footerScripts')
+  <!-- Core JS files -->
+  <script src="{{asset('public/backend/assets/global/js/main/jquery.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/main/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/loaders/blockui.min.js')}}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script src="{{asset('public/backend/assets/global/js/plugins/visualization/d3/d3.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/visualization/d3/d3_tooltip.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/forms/styling/switchery.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/ui/moment/moment.min.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/pickers/daterangepicker.js')}}"></script>
+    <script src="{{asset('public/backend/assets/global/js/plugins/forms/selects/select2.min.js')}}"></script>   
+    <script src="{{asset('public/backend/assets/global/js/plugins/forms/styling/uniform.min.js')}}"></script>   
+    <script src="{{asset('public/backend/assets/global//js/plugins/tables/datatables/datatables.min.js')}}"></script>   
+    <script src="{{asset('public/backend/assets/js/app.js')}}"></script>
+    <script src="{{asset('public/backend/assets/js/custom.js')}}"></script>
+    <!-- /theme JS files -->
+
+  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
@@ -143,8 +154,8 @@
     }
     @endif
 </script>
-
-<script>
+<script src="{{asset('public/backend/assets/js/custom.js')}}"></script>
+<!-- <script>
     $(document).on("click", "#delete", function(e){
         e.preventDefault();
         var link = $(this).attr("href");
@@ -163,7 +174,7 @@
                 }
             });
     });
-</script>
-
+</script> -->
+@show
 </body>
 </html>

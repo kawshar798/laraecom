@@ -28,13 +28,13 @@ Route::group(['prefix'  =>  'admin'], function () {
     Route::get('logout', 'Admin\LoginController@logout')->name('admin.logout');
 
 
-    Route::group(['middleware'=>'auth:admin'],function (){
-        Route::get('/','Admin\AdminController@index');
+    Route::group(['middleware'=>'auth:admin','namespace'=>'Admin'],function (){
+        Route::get('/','AdminController@index');
+        Route::group(['prefix'=>'category'],function(){
+            Route::get('/','CategoryController@index')->name('category.index');
+            Route::any('create','CategoryController@create')->name('category.create');
+            Route::any('delete/{id}','CategoryController@destroy')->name('category.destroy');
+        });
     });
-
-
-//    Route::get('/', function () {
-//        return view('admin.dashboard');
-//    })->middleware('auth');
 
 });
