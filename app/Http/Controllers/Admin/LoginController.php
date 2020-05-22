@@ -59,6 +59,7 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
+        
         $notification=array(
             'messege'=>'Successfully Logout',
             'alert-type'=>'success'

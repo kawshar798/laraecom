@@ -26,26 +26,40 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($categories as $index=>$catgory)
+            @foreach($categories as $index=>$category)
             <tr>
                 <td>{{++$index}}</td>
-                <td>{{$catgory->name}}</td>
-                <td>{{$catgory->slug}}</td>
-                <td>{{$catgory->parent_id}}</td>
-                <td>{{$catgory->featured}}</td>
-                <td><span class="badge badge-success">{{$catgory->status}}</span></td>
+                <td>{{$category->name}}</td>
+                <td>{{$category->slug}}</td>
+                <td>{{isset($category->parent->name)?$category->parent->name:''}}</td>
+                <td>
+                @if($category->featured==1)
+                <span class="badge badge-success">Yes</span>
+                @else
+                <span class="badge badge-danger">No</span>
+                @endif
+                </td>
+                <td>
+                @if($category->status == 'Inactive')
+                                       <span class="badge badge-warning ">Inactive</span>
+                                    @else
+                                        <span class="badge badge-success">Active</span>
+                                    @endif
+            
+            </td>
                 <td class="text-center">
-                <a href="#" class="btn btn-primary">Edit</a>
-                <!-- <a href="#"  id="delete" class="btn btn-danger">Delete</a> -->
-                <!-- <a href="{{ url('admin/category/delete', $catgory->id) }}" data-id="{{ $catgory->id }}  class="btn delete_brand_button btn-sm btn-outline-danger py-0" style="font-size: 0.8em;">
-   Delete
-</a> -->
-
-<button  data-success_url="{{url('admin/category')}}" data-token="{{ csrf_token() }}" data-url="{{ url('admin/category/delete', $catgory->id) }}" class="btn btn-danger delete_brand_button"
- data-id="{{ $catgory->id }}"  title="Delete">Delete</button>
-
-                <a href="#" class="btn btn-success">Active</a>
-                <a href="#" class="btn btn-warning">Inactive</a>
+                <a href="{{ url('admin/category/edit', $category->id) }}" class="btn btn-primary">Edit</a>
+                
+                <button  data-success_url="{{url('admin/category')}}" data-token="{{ csrf_token() }}" data-url="{{ url('admin/category/delete', $category->id) }}" class="btn btn-danger delete_category"
+                data-id="{{ $category->id }}"  title="Delete">Delete</button>
+                @if($category->status == 'Inactive')
+                <button  data-success_url="{{url('admin/category')}}" data-token="{{ csrf_token() }}" data-url="{{ url('admin/category/active', $category->id) }}" class="btn btn-success active_category"
+                data-id="{{ $category->id }}"  title="Active">Active</button>
+                @else
+                <button  data-success_url="{{url('admin/category')}}" data-token="{{ csrf_token() }}" data-url="{{ url('admin/category/inactive', $category->id) }}" class="btn btn-warning inactive_category"
+                data-id="{{ $category->id }}"  title="InActive">Inactive</button>
+                @endif
+                
                 </td>
             </tr>
             @endforeach

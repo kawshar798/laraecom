@@ -33,6 +33,9 @@ Route::group(['prefix'  =>  'admin'], function () {
         Route::group(['prefix'=>'category'],function(){
             Route::get('/','CategoryController@index')->name('category.index');
             Route::any('create','CategoryController@create')->name('category.create');
+            Route::any('edit/{id}','CategoryController@edit')->name('category.edit');
+            Route::any('active/{id}','CategoryController@active')->name('category.active');
+            Route::any('inactive/{id}','CategoryController@inactive')->name('category.inactive');
             Route::any('delete/{id}','CategoryController@destroy')->name('category.destroy');
         });
     });

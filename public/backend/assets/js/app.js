@@ -75,6 +75,8 @@ var App = function () {
             revertBottomMenus();
         });
     };
+  
+
 
     // Toggle main sidebar
     var _sidebarMainToggle = function() {

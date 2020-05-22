@@ -29,10 +29,11 @@ $.extend( $.fn.dataTable.defaults, {
 });
 
 
-// Basic datatable
+// Category list show
 $('.category-list').DataTable();
 
-$(document).on('click', '.delete_brand_button', function(e) {
+// Category Active
+$(document).on('click', '.active_category', function(e) {
     e.preventDefault();
     var id = $(this).data("id");
     var url = $(this).data("url");
@@ -40,7 +41,87 @@ $(document).on('click', '.delete_brand_button', function(e) {
     var token = $("meta[name='csrf-token']").attr("content");
 
     swal({
-    title:"Are You Sure Delete this???",
+    title:"Are You Sure Active this?",
+    // text: " ",
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+}).then(willDelete => {
+    if (willDelete) {
+        $.ajax(
+{
+  url: url,
+  success_url:success_url,
+  type: 'PUT',
+  data: {
+    _token: token,
+        id: id
+},
+success: function(result) {
+    if (result.success == true) {
+        toastr.success(result.messege);
+        // setTimeout(function(){
+          location.reload(success_url);
+        // },  2000);
+    } else {
+        toastr.error(result.messege);
+    }
+},
+});
+    }
+});
+});
+
+// Category Inactive
+$(document).on('click', '.inactive_category', function(e) {
+    e.preventDefault();
+    var id = $(this).data("id");
+    var url = $(this).data("url");
+    var success_url = $(this).data("success_url");
+    var token = $("meta[name='csrf-token']").attr("content");
+
+    swal({
+    title:"Are You Sure Inactive this?",
+    // text: " ",
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+}).then(willDelete => {
+    if (willDelete) {
+        $.ajax(
+{
+  url: url,
+  success_url:success_url,
+  type: 'PUT',
+  data: {
+    _token: token,
+        id: id
+},
+success: function(result) {
+    if (result.success == true) {
+        toastr.success(result.messege);
+        // setTimeout(function(){
+          location.reload(success_url);
+        // },  2000);
+    } else {
+        toastr.error(result.messege);
+    }
+},
+});
+    }
+});
+});
+
+// Category Delete
+$(document).on('click', '.delete_category', function(e) {
+    e.preventDefault();
+    var id = $(this).data("id");
+    var url = $(this).data("url");
+    var success_url = $(this).data("success_url");
+    var token = $("meta[name='csrf-token']").attr("content");
+
+    swal({
+    title:"Are You Sure Delete this?",
     // text: " ",
     icon: 'warning',
     buttons: true,
@@ -69,7 +150,8 @@ success: function(result) {
 });
     }
 });
-
-
 });
+
+
+
 });
