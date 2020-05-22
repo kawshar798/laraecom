@@ -112,6 +112,7 @@ success: function(result) {
 });
 });
 
+
 // Category Delete
 $(document).on('click', '.delete_category', function(e) {
     e.preventDefault();

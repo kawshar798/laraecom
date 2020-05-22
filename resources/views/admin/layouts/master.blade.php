@@ -177,7 +177,7 @@
     });
 </script> -->
 
-<script>
+<!-- <script>
     @if($errors->any())
     @foreach($errors->all() as $error)
     toastr.error('{{ $error }}','Error',{
@@ -186,7 +186,7 @@
     });
     @endforeach
     @endif
-</script>
+</script> -->
 @show
 </body>
 </html>

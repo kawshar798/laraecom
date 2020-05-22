@@ -30,6 +30,7 @@ Route::group(['prefix'  =>  'admin'], function () {
 
     Route::group(['middleware'=>'auth:admin','namespace'=>'Admin'],function (){
         Route::get('/','AdminController@index');
+
         Route::group(['prefix'=>'category'],function(){
             Route::get('/','CategoryController@index')->name('category.index');
             Route::any('create','CategoryController@create')->name('category.create');
@@ -37,7 +38,19 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','CategoryController@active')->name('category.active');
             Route::any('inactive/{id}','CategoryController@inactive')->name('category.inactive');
             Route::any('delete/{id}','CategoryController@destroy')->name('category.destroy');
+            
         });
+
+        Route::group(['prefix'=>'brand'],function(){
+            Route::get('/','BrandController@index')->name('brand');
+            Route::post('/store','BrandController@store')->name('brand.store');
+            Route::any('active/{id}','BrandController@active')->name('brand.active');
+            Route::any('inactive/{id}','BrandController@inactive')->name('brand.inactive');
+            Route::any('delete/{id}','BrandController@destroy')->name('brand.destroy');
+           
+        });
+
+    
     });
 
 });
