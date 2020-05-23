@@ -40,13 +40,22 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('delete/{id}','CategoryController@destroy')->name('category.destroy');
             
         });
-
+        //Brand Route
         Route::group(['prefix'=>'brand'],function(){
             Route::get('/','BrandController@index')->name('brand');
             Route::post('/store','BrandController@store')->name('brand.store');
             Route::any('active/{id}','BrandController@active')->name('brand.active');
             Route::any('inactive/{id}','BrandController@inactive')->name('brand.inactive');
             Route::any('delete/{id}','BrandController@destroy')->name('brand.destroy');
+           
+        });
+        //Coupon Route
+        Route::group(['prefix'=>'coupon'],function(){
+            Route::get('/','CouponController@index')->name('coupon');
+            Route::post('/store','CouponController@store')->name('coupon.store');
+            Route::any('active/{id}','CouponController@active')->name('coupon.active');
+            Route::any('inactive/{id}','CouponController@inactive')->name('coupon.inactive');
+            Route::any('delete/{id}','CouponController@destroy')->name('coupon.destroy');
            
         });
 
