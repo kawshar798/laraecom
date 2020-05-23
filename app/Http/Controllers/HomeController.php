@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NewsLetter;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -11,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,5 +27,29 @@ class HomeController extends Controller
     public function index()
     {
         return view('userhome');
+    }
+
+    public function fontendShow(){
+        return view('welcome');
+    }
+
+    public function newsletterStore(Request $request){
+
+        DB::beginTransaction();
+        try{
+        $newsletter = new NewsLetter(); 
+         $newsletter->email = $request->email;
+         $newsletter->save();
+         DB::commit();
+         $output = ['success' => true,
+         'messege'            => "Brand Active success",
+     ];
+     return $output;
+        }catch(Exception $e){
+         DB::rollBack();
+        
+        return $e->getMessage();
+        }
+
     }
 }

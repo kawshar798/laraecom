@@ -22,7 +22,7 @@ class BrandController extends Controller
         
     //    return  $request->all();
      
-    $request->id;
+    // $request->id;
 
         DB::beginTransaction();
        try{

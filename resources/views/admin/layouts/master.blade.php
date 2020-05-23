@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+    <title>LaraEcom</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="{{asset('public/backend/assets/global/css/icons/icomoon/styles.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset("public/backend/assets/css/bootstrap.min.css")}}" rel="stylesheet" type="text/css">
-    <link href="{{asset("public/backend/assets/css/bootstrap_limitless.min.css")}}" rel="stylesheet" type="text/css">
-    <link href="{{asset("public/backend/assets/css/layout.min.css")}}" rel="stylesheet" type="text/css">
-    <link href="{{asset("public/backend/assets/css/components.min.css")}}" rel="stylesheet" type="text/css">
-    <link href="{{asset("public/backend/assets/css/colors.min.css")}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('public/backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('public/backend/assets/css/bootstrap_limitless.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('public/backend/assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('public/backend/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('public/backend/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- /global stylesheets -->
 
@@ -128,7 +128,7 @@
     <script src="{{asset('public/backend/assets/global/js/plugins/forms/styling/uniform.min.js')}}"></script>   
     <script src="{{asset('public/backend/assets/global//js/plugins/tables/datatables/datatables.min.js')}}"></script>   
     <script src="{{asset('public/backend/assets/js/app.js')}}"></script>
-    <script src="{{asset('public/backend/assets/js/custom.js')}}"></script>
+    <!-- <script src="{{asset('public/backend/assets/js/custom.js')}}"></script> -->
     <!-- /theme JS files -->
 
   
@@ -156,28 +156,26 @@
 </script>
 <script src="{{asset('public/backend/assets/js/custom.js')}}"></script>
 
-<!-- <script>
-    $(document).on("click", "#delete", function(e){
-        e.preventDefault();
-        var link = $(this).attr("href");
-        swal({
-            title: "Are you Want to delete?",
-            text: "Once Delete, This will be Permanently Delete!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    window.location.href = link;
-                } else {
-                    swal("Safe Data!");
-                }
-            });
-    });
-</script> -->
+<script>
+    // $(document).on("click", "#delete", function(e){
+    //     e.preventDefault();
+    //     var link = $(this).attr("href");
+    //     swal({
+    //         title: "Are you Want to delete?",
+    //         text: "Once Delete, This will be Permanently Delete!",
+    //         icon: "warning",
+    //         buttons: true,
+    //         dangerMode: true,
+    //     })
+    //         .then((willDelete) => {
+    //             if (willDelete) {
+    //                 window.location.href = link;
+    //             } else {
+    //                 swal("Safe Data!");
+    //             }
+    //         });
+    //  });
 
-<!-- <script>
     @if($errors->any())
     @foreach($errors->all() as $error)
     toastr.error('{{ $error }}','Error',{
@@ -186,7 +184,7 @@
     });
     @endforeach
     @endif
-</script> -->
+</script>
 @show
 </body>
 </html>

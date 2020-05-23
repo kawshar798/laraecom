@@ -13,11 +13,14 @@ if (!$().DataTable) {
 
 // Setting datatable defaults
 $.extend( $.fn.dataTable.defaults, {
-    autoWidth: false,
+    autoWidth: true,
+    "pageLength": 50,
+    responsive: true,
     columnDefs: [{
         orderable: false,
         width: 100,
-        targets: [ 5 ]
+        "targets": 0,
+       
     }],
     dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
     language: {

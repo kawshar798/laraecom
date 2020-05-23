@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@fontendShow')->name('/');
 
 Route::group(['prefix'  =>  'admin'], function () {
 
@@ -59,7 +60,16 @@ Route::group(['prefix'  =>  'admin'], function () {
            
         });
 
+        //Newsletter Route
+        Route::group(['prefix'=>'newsletter'],function(){
+            Route::get('/','NewsLetterController@index')->name('coupon');
+            Route::any('delete/{id}','NewsLetterController@destroy')->name('coupon.destroy');
+           
+        });
+
     
     });
 
 });
+//Newsletter store for front-end
+Route::post('/newsletter/store', 'HomeController@newsletterStore')->name('home');

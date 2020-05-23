@@ -24,9 +24,10 @@
     <link rel="stylesheet" href="{{asset('public/frontend/assets/vendor/fancybox/jquery.fancybox.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/assets/vendor/slick-carousel/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- CSS Electro Template -->
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/theme.css')}}">
+
 </head>
 
 <body>
@@ -95,6 +96,7 @@
 <script src="{{asset('public/frontend/assets/js/components/hs.svg-injector.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/components/hs.go-to.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/components/hs.selectpicker.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <!-- JS Plugins Init. -->
 <script>
@@ -197,6 +199,62 @@
         // initialization of select picker
         $.HSCore.components.HSSelectPicker.init('.js-select');
     });
+</script>
+    <script>
+        @if(Session::has('messege'))
+    var type="{{Session::get('alert-type','info')}}"
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('messege') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('messege') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('messege') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('messege') }}");
+            break;
+    }
+    @endif
+</script>
+<script>
+    //Store Brand
+$(document).ready(function () {
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+});
+});
+
+$(document).on('submit', '#newsletter_id', function(e) {
+   
+    e.preventDefault();
+    var submit_url = $(this).attr("submit_url");
+    var success_url = $(this).attr("success_url");
+    var fd = new FormData(document.getElementById("newsletter_id"));
+    $.ajax({
+        method: 'POST',
+        url:"{{url('newsletter/store')}}",
+        data:fd,
+        processData: false,
+        contentType: false,
+        success: function(result) {
+            if (result.success == true) {
+                toastr.success(result.messege);
+                location.reload(success_url);
+            } else {
+                toastr.error(result.messege);
+            }
+        },
+    });
+});
+</script>
+<script src="{{asset('public/frontend/assets/js/custom.js')}}"></script>
+
 </script>
 </body>
 </html>
