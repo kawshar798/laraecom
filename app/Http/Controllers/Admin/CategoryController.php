@@ -127,6 +127,13 @@ class CategoryController extends Controller {
     return $output;
     }
 
+
+    public function getSubCategory($id){
+        $subcategories = Category::where('parent_id',$id)->where('status','Active')->get();
+
+        return $subcategories;
+
+    }
     public function destroy( $id ) {
         $category = Category::find( $id );
         if (file_exists($category->image)) {
