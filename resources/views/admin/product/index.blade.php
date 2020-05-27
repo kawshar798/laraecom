@@ -52,9 +52,9 @@
                    @endif
                 </td>
                 <td>
-                <button type="button" data-name="{{$product->name}}" data-logo="{{$product->logo}}"  data-id="{{$product->id}}" class="btn btn-primary  edit-btn" data-toggle="modal" data-target="#addFees1">
-                                        Edit</i>
-                   </button>
+                <a href="{{url('/admin/product/edit',$product->id)}}" class="btn btn-primary ">
+                                        Edit
+</a>
                    <button  data-success_url="{{url('admin/product')}}" data-token="{{ csrf_token() }}" data-url="{{ url('admin/product/delete', $product->id) }}" class="btn btn-danger delete_product"
                 data-id="{{ $product->id }}"  title="Delete">Delete</button>
 
