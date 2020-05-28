@@ -54,6 +54,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('delete/{id}','BrandController@destroy')->name('brand.destroy');
            
         });
+        
         //Product Route
         Route::group(['prefix'=>'product'],function(){
             Route::get('/','ProductController@index')->name('product');
