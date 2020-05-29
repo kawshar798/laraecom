@@ -25,7 +25,6 @@ class CreateCategoriesTable extends Migration
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
-            $table->integer('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
