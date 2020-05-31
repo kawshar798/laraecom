@@ -20,9 +20,6 @@ class BrandController extends Controller
 
     public function store(Request $request){
         
-    //    return  $request->all();
-     
-    // $request->id;
 
         DB::beginTransaction();
        try{
@@ -55,14 +52,6 @@ class BrandController extends Controller
         'messege'            => "Category Delete success",
     ];
     return $output;
-
-    // $notification=array(
-    //     'messege'=>'Successfully Logout',
-    //     'alert-type'=>'success'
-    // );
-    // return Redirect()->route('brand')->with($notification);
-
-
        }catch(Exception $e){
         DB::rollBack();
        

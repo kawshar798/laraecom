@@ -94,6 +94,15 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('delete/{id}','PostCategoryController@destroy')->name('post.category.destroy');
           
         });
+         //Newsletter Route
+         Route::group(['prefix'=>'post'],function(){
+            Route::get('/','PostController@index')->name('post.index');
+            Route::post('/store','PostController@store')->name('post.store');
+            Route::any('active/{id}','PostController@active')->name('post.active');
+            Route::any('inactive/{id}','PostController@inactive')->name('post.inactive');
+            Route::any('delete/{id}','PostController@destroy')->name('post.destroy');
+          
+        });
 
     
     });
