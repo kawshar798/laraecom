@@ -7,7 +7,7 @@
         <div class="header-elements">
             <div class="list-icons">
             
-                <a href="javascript:void(0)" class="btn btn-success mb-2" id="create-new-user">Add Post Category</a>
+                <a href="javascript:void(0)" class="btn btn-success mb-2" id="create-new-user">Add Post</a>
                 <a class="list-icons-item" data-action="collapse"></a>
                 <a class="list-icons-item" data-action="reload"></a>
 
@@ -19,7 +19,7 @@
         <thead>
             <tr>
                 <th>S.L</th>
-                <th>Category Name</th>
+                <th>Post Title</th>
                 <th>Slug</th>
                 <th>Image</th>
                 <th>Status</th>
@@ -165,8 +165,8 @@
             $("#modal-input-image").html(post_image);
              }
             $('.k').trigger("reset");
-            $('#modalTitile').html("Edit Post Category");
-            $('#btn-save').html("Update Category");
+            $('#modalTitile').html("Edit Post ");
+            $('#btn-save').html("Update Post");
             $('#addFees').modal('show');
         });
 
