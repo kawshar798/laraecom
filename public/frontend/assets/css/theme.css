@@ -37439,3 +37439,23 @@ blockquote:not(.blockquote) p {
 /*------------------------------------
   File for your custom SCSS style
 ------------------------------------*/
+
+span.tag_label {
+    height: 40px;
+    width: 40px;
+    
+    line-height: 40px;
+    /* padding: 10px; */
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 100%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.discount_tag{
+background: red;
+}

@@ -210,15 +210,33 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                         <div class="product-item__outer h-100">
                                             <div class="product-item__inner px-xl-4 p-3">
                                                 <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($featured->category->name)?$featured->category->name:''}}</a></div>
+                                                    <div class="mb-2">
+                                                        <a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($featured->category->name)?$featured->category->name:''}}</a>
+                                                            @php 
+                                                            $reuslt = $featured->selling_price - $featured->discount_price;
+                                                            $discount = $reuslt/$featured->selling_price*100;
+                                                            @endphp
+                                                            @if($featured->discount_price)
+                                                        <span class="tag_label discount_tag">
+                                                        {{intval($discount)}} %
+                                                        </span>
+                                                        @endif
+                                                    </div>
                                                     <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">{{$featured->name}}</a></h5>
                                                     <div class="mb-2">
                                                         <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{asset($featured->image_one)}}" alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div class="text-gray-100">৳{{$featured->selling_price}}</div>
-                                                        </div>
+                                                    <div class="prodcut-price">
+                                                        @if($featured->discount_price)
+                                                            <div class="text-gray-100">৳{{$featured->discount_price}}</div>
+                                                            @endif
+                                                            @if($featured->discount_price)
+                                                            <div class="text-gray-100"> <del class="text-danger">৳{{$featured->selling_price}}<del></div>
+                                                            @else
+                                                            <div class="text-gray-100"> ৳{{$featured->selling_price}}</div>
+                                                            @endif
+                                                            </div>
                                                         <div class="d-none d-xl-block prodcut-add-cart">
                                                             <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                         </div>
@@ -245,14 +263,34 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                         <div class="product-item__outer h-100">
                                             <div class="product-item__inner px-xl-4 p-3">
                                                 <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($trend->category->name)?$trend->category->name:''}}</a></div>
+                                                    <div class="mb-2">
+                                                    @php 
+                                                            $reuslt = $trend->selling_price - $trend->discount_price;
+                                                            $discount = $reuslt/$trend->selling_price*100;
+                                                            @endphp
+                                                            @if($trend->discount_price)
+                                                        <span class="tag_label discount_tag">
+                                                        {{intval($discount)}} %
+                                                        </span>
+                                                        @endif
+                                                    <a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($trend->category->name)?$trend->category->name:''}}</a></div>
                                                     <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">{{$trend->name}}</a></h5>
                                                     <div class="mb-2">
                                                         <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{asset($trend->image_one)}}" alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
                                                         <div class="prodcut-price">
-                                                            <div class="text-gray-100">৳{{$trend->selling_price}}</div>
+
+                                                           
+
+                                                            @if($trend->discount_price)
+                                                            <div class="text-gray-100">৳{{$trend->discount_price}}</div>
+                                                            @endif
+                                                            @if($trend->discount_price)
+                                                            <div class="text-gray-100"> <del class="text-danger">৳{{$trend->selling_price}}<del></div>
+                                                            @else
+                                                            <div class="text-gray-100"> ৳{{$trend->selling_price}}</div>
+                                                            @endif
                                                         </div>
                                                         <div class="d-none d-xl-block prodcut-add-cart">
                                                             <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
@@ -279,15 +317,32 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                         <div class="product-item__outer h-100">
                                             <div class="product-item__inner px-xl-4 p-3">
                                                 <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($rated->category->name)?$rated->category->name:''}}</a></div>
+                                                    <div class="mb-2">
+                                                    @php 
+                                                            $reuslt = $rated->selling_price - $rated->discount_price;
+                                                            $discount = $reuslt/$rated->selling_price*100;
+                                                            @endphp
+                                                            @if($rated->discount_price)
+                                                        <span class="tag_label discount_tag">
+                                                            {{intval($discount)}} %
+                                                        </span>
+                                                        @endif
+                                                    <a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($rated->category->name)?$rated->category->name:''}}</a></div>
                                                     <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">{{$rated->name}}</a></h5>
                                                     <div class="mb-2">
                                                         <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{asset($rated->image_one)}}" alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div class="text-gray-100">৳{{$rated->selling_price}}</div>
-                                                        </div>
+                                                    <div class="prodcut-price">
+                                                        @if($rated->discount_price)
+                                                            <div class="text-gray-100">৳{{$rated->discount_price}}</div>
+                                                            @endif
+                                                            @if($rated->discount_price)
+                                                            <div class="text-gray-100"> <del class="text-danger">৳{{$rated->selling_price}}<del></div>
+                                                            @else
+                                                            <div class="text-gray-100"> ৳{{$rated->selling_price}}</div>
+                                                            @endif
+                                                            </div>
                                                         <div class="d-none d-xl-block prodcut-add-cart">
                                                             <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                         </div>
