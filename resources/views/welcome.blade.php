@@ -1,9 +1,15 @@
-@php 
+@php
 $featureds = DB::table('products')->where('status','Active')->where('featured',1)->get();
 $trends = DB::table('products')->where('status','Active')->where('trend',1)->get();
 $best_rateds = DB::table('products')->where('status','Active')->where('best_rated',1)->get();
 
-@endphp 
+
+$hots = DB::table('products')->where('products.status','Active')->where('products.hot_deal',1)->orderBy('id','desc')->limit(3)
+->get();
+
+
+
+@endphp
 
 
 @extends("layouts.app")
@@ -104,31 +110,45 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
 
 
 
-   
+
      <!-- Deals-and-tabs -->
      <div class="mb-5">
             <div class="row">
                 <!-- Deal -->
-                <div class="col-md-auto mb-6 mb-md-0">
+                <div class="col-md-4 mb-6 mb-md-0">
+                    <div class="hot_deal owl-carousel">
+              @foreach($hots as $hot)
                     <div class="p-3 border border-width-2 border-primary borders-radius-20 bg-white min-width-370">
+                    @php
+                                if(isset($hot->discount_price)){
+                                    $result = $hot->selling_price - $hot->discount_price;
+                                }
+                                @endphp
+
+                                @if(isset($result))
+                                @if($result!="")
                         <div class="d-flex justify-content-between align-items-center m-1 ml-2">
                             <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Offer</h3>
                             <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
                                 <span class="font-size-12">Save</span>
-                                <div class="font-size-20 font-weight-bold">$120</div>
+
+                               
+                                <div class="font-size-20 font-weight-bold">{{$result}}</div>
                             </div>
                         </div>
+                        @endif
+                                    @endif
                         <div class="mb-4">
-                            <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{asset('public/frontend/')}}/assets/img//320X300/img1.jpg" alt="Image Description"></a>
+                            <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{asset($hot->image_one)}}" alt="$hot->name"></a>
                         </div>
-                        <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                        <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">{{$hot->name}}</a></h5>
                         <div class="d-flex align-items-center justify-content-center mb-3">
-                            <del class="font-size-18 mr-2 text-gray-2">$99,00</del>
-                            <ins class="font-size-30 text-red text-decoration-none">$79,00</ins>
+                            <del class="font-size-18 mr-2 text-gray-2">{{$hot->selling_price}}৳</del>
+                            <ins class="font-size-30 text-red text-decoration-none">{{$hot->discount_price}}৳</ins>
                         </div>
                         <div class="mb-3 mx-2">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="">Availavle: <strong>6</strong></span>
+                                <span class="">Availavle: <strong>{{$hot->quantity}}</strong></span>
                                 <span class="">Already Sold: <strong>28</strong></span>
                             </div>
                             <div class="rounded-pill bg-gray-3 height-20 position-relative">
@@ -165,10 +185,13 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                             </div>
                         </div>
                     </div>
+                @endforeach
+                    </div>
+
                 </div>
                 <!-- End Deal -->
                 <!-- Tab Prodcut -->
-                <div class="col">
+                <div class="col-md-8">
                     <!-- Features Section -->
                     <div class="">
                         <!-- Nav Classic -->
@@ -212,7 +235,7 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                                 <div class="product-item__body pb-xl-2">
                                                     <div class="mb-2">
                                                         <a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{isset($featured->category->name)?$featured->category->name:''}}</a>
-                                                            @php 
+                                                            @php
                                                             $reuslt = $featured->selling_price - $featured->discount_price;
                                                             $discount = $reuslt/$featured->selling_price*100;
                                                             @endphp
@@ -264,7 +287,7 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                             <div class="product-item__inner px-xl-4 p-3">
                                                 <div class="product-item__body pb-xl-2">
                                                     <div class="mb-2">
-                                                    @php 
+                                                    @php
                                                             $reuslt = $trend->selling_price - $trend->discount_price;
                                                             $discount = $reuslt/$trend->selling_price*100;
                                                             @endphp
@@ -281,7 +304,7 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                                     <div class="flex-center-between mb-1">
                                                         <div class="prodcut-price">
 
-                                                           
+
 
                                                             @if($trend->discount_price)
                                                             <div class="text-gray-100">৳{{$trend->discount_price}}</div>
@@ -307,7 +330,7 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                         </div>
                                     </li>
                                    @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div class="tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab">
@@ -318,7 +341,7 @@ $best_rateds = DB::table('products')->where('status','Active')->where('best_rate
                                             <div class="product-item__inner px-xl-4 p-3">
                                                 <div class="product-item__body pb-xl-2">
                                                     <div class="mb-2">
-                                                    @php 
+                                                    @php
                                                             $reuslt = $rated->selling_price - $rated->discount_price;
                                                             $discount = $reuslt/$rated->selling_price*100;
                                                             @endphp

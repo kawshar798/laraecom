@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="{{asset('public/frontend/assets/vendor/slick-carousel/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
     <!-- CSS Electro Template -->
+    <link rel="stylesheet" href="{{asset('public/frontend/assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/theme.css')}}">
 
 </head>
@@ -96,6 +99,7 @@
 <script src="{{asset('public/frontend/assets/js/components/hs.svg-injector.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/components/hs.go-to.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/components/hs.selectpicker.js')}}"></script>
+<script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <!-- JS Plugins Init. -->
@@ -231,7 +235,7 @@ $(document).ready(function () {
 });
 
 $(document).on('submit', '#newsletter_id', function(e) {
-   
+
     e.preventDefault();
     var submit_url = $(this).attr("submit_url");
     var success_url = $(this).attr("success_url");

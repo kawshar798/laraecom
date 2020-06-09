@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdee6a52-aac8-4afc-adca-9a03cf21fb6d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/-5ecd272220c57.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd2723bd10f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd27258ca43.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd279e8b462.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd279f7b945.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd2840b3ef7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd2841baafb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ecd2842eb90e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ed4c7eeb774f.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5ed4c7ef7d9d2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laraecom.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laraecom.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +137,8 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/haruncpi/laravel-log-reader" />
     </include_path>
   </component>
   <component name="ProjectId" id="1c8PDzE5h5JMYEyvDXTz8Ks6NqW" />
@@ -170,6 +186,9 @@
       <workItem from="1589950053250" duration="7771000" />
       <workItem from="1590041468729" duration="2184000" />
       <workItem from="1590052360331" duration="587000" />
+      <workItem from="1591599067601" duration="106000" />
+      <workItem from="1591613201335" duration="850000" />
+      <workItem from="1591683435228" duration="2002000" />
     </task>
     <servers />
   </component>
@@ -194,7 +213,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/admin/layouts/master.blade.php</url>
-          <line>55</line>
+          <line>43</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
