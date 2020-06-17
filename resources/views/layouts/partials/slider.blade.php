@@ -1,52 +1,90 @@
 
-@php 
+@php
 $products = DB::table('products')->where('status','Active')->where('main_slider',1)->get();
-@endphp 
+$categories = DB::table('categories')->where('status','Active')->where('parent_id',0)->get();
+
+@endphp
 
 
-<div class="mb-5">
-        <div class="bg-img-hero" style="background-image: url({{asset('public/frontend/')}}/assets/img//1920X422/img1.jpg);">
-            <div class="container min-height-420 overflow-hidden">
-                <div class="js-slick-carousel u-slick"
-                     data-pagi-classes="text-center position-absolute right-0 bottom-0 left-0 u-slick__pagination u-slick__pagination--long justify-content-start mb-3 mb-md-4 offset-xl-3 pl-2 pb-1">
-                   
-                   @foreach($products as $product)
-                   <div class="js-slide bg-img-hero-center">
-                        <div class="row min-height-420 py-7 py-md-0">
-                            <div class="offset-xl-3 col-xl-4 col-6 mt-md-8">
-                                <h1 class="font-size-64 text-lh-57 font-weight-light"
-                                    data-scs-animation-in="fadeInUp">
-                                    {{$product->name}}
-                                </h1>
-                                <h6 class="font-size-15 font-weight-bold mb-3"
-                                    data-scs-animation-in="fadeInUp"
-                                    data-scs-animation-delay="200">
-                                    {{isset($product->brand->name)?$product->brand->name:''}}
-                                    
-                                </h6>
-                                <div class="mb-4"
-                                     data-scs-animation-in="fadeInUp"
-                                     data-scs-animation-delay="300">
-                                    <!-- <span class="font-size-13">FROM</span> -->
-                                    <div class="font-size-50 font-weight-bold text-lh-45">
-                                        <sup class=""> ৳</sup>{{$product->selling_price}}<sup class=""> <del>{{isset($product->discount_price)?$product->discount_price:''}}</del></sup>
-                                    </div>
+<div class="slider-with-banner">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Category Menu Area -->
+            <div class="col-lg-3">
+                <!--Category Menu Start-->
+                <div class="category-menu">
+                    <div class="category-heading">
+                        <h2 class="categories-toggle"><span>categories</span></h2>
+                    </div>
+                    <div id="cate-toggle" class="category-menu-list">
+                        <ul>
+                            @foreach($categories as $category)
+                                @php
+                                    $sub_categories = DB::table('categories')->where('status','Active')->where('parent_id',$category->id)->get();
+                                @endphp
+                                <li class="right-menu"><a href="shop-left-sidebar.html">{{$category->name}}</a>
+                                    @if($sub_categories)
+                                <ul class="cat-mega-menu">
+                                    <li class="right-menu cat-mega-title">
+                                        <a href="shop-left-sidebar.html">{{$category->name}}</a>
+                                        <ul>
+                                            @foreach($sub_categories as $sub_categorie)
+                                                <li><a href="#">{{$sub_categorie->name}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                </ul>
+                                @endif
+                            </li>
+
+                            <li><a href="#">Cameras</a></li>
+
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+                <!--Category Menu End-->
+            </div>
+            <!-- Category Menu Area End Here -->
+            <!-- Begin Slider Area -->
+            <div class="col-lg-9">
+                <div class="slider-area pt-sm-30 pt-xs-30">
+                    <div class="slider-active owl-carousel">
+                        <!-- Begin Single Slide Area -->
+                        @foreach($products as $product)
+                        <div class="single-slide align-center-left animation-style-02 slider_bg" style="background: url({{asset($product->image_one)}})">
+                            <div class="slider-progress"></div>
+                            <div class="slider-content">
+                                @php
+                                    $reuslt = $product->selling_price - $product->discount_price;
+                                    $discount = $reuslt/$product->selling_price*100;
+                                @endphp
+                                @if($product->discount_price)
+                                <h5>Sale Offer <span>-{{intval($discount)}}% Off</span></h5>
+                                @endif
+                                <h2>{{$product->name}}</h2>
+                                @if($product->discount_price)
+                                    <h3 style="margin-bottom: 5px"><span>৳{{$product->discount_price}}</span></h3>
+                                @endif
+                                @if($product->discount_price)
+                                    <h3><span><del class="text-danger">৳{{$product->selling_price}}<del></span></h3>
+                                @else
+                                    <h3> ৳{{$product->selling_price}}</h3>
+                                @endif
+
+
+                                <div class="default-btn slide-btn">
+                                    <a class="links" href="">Shopping Now</a>
+
                                 </div>
-                                <a href="{{$product->id}}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
-                                   data-scs-animation-in="fadeInUp"
-                                   data-scs-animation-delay="400">
-                                    Start Buying
-                                </a>
-                            </div>
-                            <div class="col-xl-5 col-6  d-flex align-items-center"
-                                 data-scs-animation-in="zoomIn"
-                                 data-scs-animation-delay="500">
-                                <img class="img-fluid" src="{{asset($product->image_one)}}" alt="Image Description">
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                   @endforeach
                 </div>
             </div>
+            <!-- Slider Area End Here -->
         </div>
     </div>
+</div>
