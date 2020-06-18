@@ -158,10 +158,15 @@
                         <!-- Begin Footer Newsletter Area -->
                         <div class="footer-newsletter">
                             <h4>Sign up to newsletter</h4>
-                            <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
+                            <form action="#" method="post" id="newsletter_id" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
                                 <div id="mc_embed_signup_scroll">
-                                    <div id="mc-form" class="mc-form subscribe-form form-group" >
-                                        <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
+                                    <div  class="mc-form subscribe-form form-group" >
+                                        @csrf
+                                        <input type="hidden" class="success_url"   method="get" value="{{url('/')}}">
+                                        <input type="hidden" class="submit_url"   method="POST" value="{{url('newsletter/store')}}">
+                                        <input type="hidden" class="method" value="POST">
+                                        <input type="hidden" id="_token" value="{{ csrf_token() }}">
+                                        <input id="mc-email" type="email" name="email" autocomplete="off" placeholder="Enter your email" />
                                         <button  class="btn" id="mc-submit">Subscribe</button>
                                     </div>
                                 </div>

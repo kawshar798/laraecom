@@ -304,6 +304,7 @@
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/helper.css')}}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/responsive.css')}}">
     <!-- Modernizr js -->
@@ -476,8 +477,62 @@
 <script src="{{asset('public/frontend/assets/js/jquery.nice-select.min.js')}}"></script>
 <!-- ScrollUp js -->
 <script src="{{asset('public/frontend/assets/js/scrollUp.min.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!-- Main/Activator js -->
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
+<script>
+        @if(Session::has('messege'))
+    var type="{{Session::get('alert-type','info')}}"
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('messege') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('messege') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('messege') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('messege') }}");
+            break;
+    }
+    @endif
+</script>
+<script>
+    //Store Brand
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+
+        });
+    });
+
+    $(document).on('submit', '#newsletter_id', function(e) {
+
+        e.preventDefault();
+        var submit_url = $(this).attr("submit_url");
+        var success_url = $(this).attr("success_url");
+        var fd = new FormData(document.getElementById("newsletter_id"));
+        $.ajax({
+            method: 'POST',
+            url:"{{url('newsletter/store')}}",
+            data:fd,
+            processData: false,
+            contentType: false,
+            success: function(result) {
+                if (result.success == true) {
+                    toastr.success(result.messege);
+                    // location.reload(success_url);
+                } else {
+                    toastr.error(result.messege);
+                }
+            },
+        });
+    });
+</script>
 </body>
 
 <!-- index-231:38-->

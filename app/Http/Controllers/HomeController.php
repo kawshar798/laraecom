@@ -37,17 +37,17 @@ class HomeController extends Controller
 
         DB::beginTransaction();
         try{
-        $newsletter = new NewsLetter(); 
+        $newsletter = new NewsLetter();
          $newsletter->email = $request->email;
          $newsletter->save();
          DB::commit();
          $output = ['success' => true,
-         'messege'            => "Brand Active success",
+         'messege'            => "Thank you for subscribe",
      ];
      return $output;
         }catch(Exception $e){
          DB::rollBack();
-        
+
         return $e->getMessage();
         }
 
