@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@fontendShow')->name('/');
-
+Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 Route::group(['prefix'  =>  'admin'], function () {
 
     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
@@ -39,8 +39,8 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','CategoryController@active')->name('category.active');
             Route::any('inactive/{id}','CategoryController@inactive')->name('category.inactive');
             Route::any('delete/{id}','CategoryController@destroy')->name('category.destroy');
-         
-            
+
+
         });
         //Get all sub Category
         Route::any('get/subcategory/{id}','CategoryController@getSubCategory')->name('subcategory');
@@ -52,9 +52,9 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','BrandController@active')->name('brand.active');
             Route::any('inactive/{id}','BrandController@inactive')->name('brand.inactive');
             Route::any('delete/{id}','BrandController@destroy')->name('brand.destroy');
-           
+
         });
-        
+
         //Product Route
         Route::group(['prefix'=>'product'],function(){
             Route::get('/','ProductController@index')->name('product');
@@ -65,7 +65,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','ProductController@active')->name('product.active');
             Route::any('inactive/{id}','ProductController@inactive')->name('product.inactive');
             Route::any('delete/{id}','ProductController@destroy')->name('product.destroy');
-                
+
         });
 
 
@@ -76,7 +76,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','CouponController@active')->name('coupon.active');
             Route::any('inactive/{id}','CouponController@inactive')->name('coupon.inactive');
             Route::any('delete/{id}','CouponController@destroy')->name('coupon.destroy');
-           
+
         });
 
         //Newsletter Route
@@ -92,7 +92,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','PostCategoryController@active')->name('post.category.active');
             Route::any('inactive/{id}','PostCategoryController@inactive')->name('post.category.inactive');
             Route::any('delete/{id}','PostCategoryController@destroy')->name('post.category.destroy');
-          
+
         });
          //Newsletter Route
          Route::group(['prefix'=>'post'],function(){
@@ -101,10 +101,10 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('active/{id}','PostController@active')->name('post.active');
             Route::any('inactive/{id}','PostController@inactive')->name('post.inactive');
             Route::any('delete/{id}','PostController@destroy')->name('post.destroy');
-          
+
         });
 
-    
+
     });
 
 });

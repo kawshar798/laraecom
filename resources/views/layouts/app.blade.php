@@ -309,6 +309,8 @@
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/responsive.css')}}">
     <!-- Modernizr js -->
     <script src="{{asset('public/frontend/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+        @stack('css')
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -525,7 +527,7 @@
             success: function(result) {
                 if (result.success == true) {
                     toastr.success(result.messege);
-                    // location.reload(success_url);
+                    document.getElementById("newsLetterEmail").value='';
                 } else {
                     toastr.error(result.messege);
                 }

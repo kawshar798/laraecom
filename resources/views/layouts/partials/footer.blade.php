@@ -166,7 +166,7 @@
                                         <input type="hidden" class="submit_url"   method="POST" value="{{url('newsletter/store')}}">
                                         <input type="hidden" class="method" value="POST">
                                         <input type="hidden" id="_token" value="{{ csrf_token() }}">
-                                        <input id="mc-email" type="email" name="email" autocomplete="off" placeholder="Enter your email" />
+                                        <input id="newsLetterEmail" type="email" name="email" autocomplete="off" placeholder="Enter your email" />
                                         <button  class="btn" id="mc-submit">Subscribe</button>
                                     </div>
                                 </div>
