@@ -26,9 +26,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('userhome');
+        return view('user.userhome');
+    }
+  public function userOrder()
+    {
+        return view('user.orders');
     }
 
+    public function userProfile()
+    {
+        return view('user.profile');
+    }
+    public function userAddress()
+    {
+        return view('user.address');
+    }
+    public function userChangePassword()
+    {
+        return view('user.changepassword');
+    }
     public function fontendShow(){
         return view('welcome');
     }

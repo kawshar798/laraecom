@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'HomeController@fontendShow')->name('/');
 Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 Route::group(['prefix'  =>  'admin'], function () {
@@ -108,5 +108,18 @@ Route::group(['prefix'  =>  'admin'], function () {
     });
 
 });
+
+
+//User info
+
+Route::group(['as'=>'user.','prefix'=>'user','middleware' => 'auth'],function (){
+    Route::get('dashboard', 'HomeController@index')->name('home');
+    Route::get('/order', 'HomeController@userOrder')->name('order');
+    Route::get('/profile', 'HomeController@userProfile')->name('profile');
+    Route::get('/address', 'HomeController@userAddress')->name('address');
+    Route::get('/change-password', 'HomeController@userChangePassword')->name('chnagepass');
+});
+
+
 //Newsletter store for front-end
 Route::post('/newsletter/store', 'HomeController@newsletterStore')->name('home');
