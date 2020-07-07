@@ -70,7 +70,6 @@
                                 <div class="box-account box-info">
                                     <form method="post" name="enq">
                                         <div class="row">
-
                                             <div class="form-group col-md-12">
                                                 <label>Current Password <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="password" type="password">

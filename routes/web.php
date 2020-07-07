@@ -22,6 +22,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@fontendShow')->name('/');
 Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
+Route::post('register', 'Auth\RegisterController@userRegister')->name('register');
 Route::group(['prefix'  =>  'admin'], function () {
 
     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
@@ -113,6 +114,7 @@ Route::group(['prefix'  =>  'admin'], function () {
 //User info
 
 Route::group(['as'=>'user.','prefix'=>'user','middleware' => 'auth'],function (){
+
     Route::get('dashboard', 'HomeController@index')->name('home');
     Route::get('/order', 'HomeController@userOrder')->name('order');
     Route::get('/profile', 'HomeController@userProfile')->name('profile');

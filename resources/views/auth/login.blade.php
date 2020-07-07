@@ -72,14 +72,14 @@
 
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form  action="{{ url('register') }}" method="POST">
                         @csrf
                         <div class="login-form">
                             <h4 class="login-title">Register</h4>
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-20">
                                     <label>Full  Name</label>
-                                    <input class="mb-0  @error('name') is-invalid @enderror" value="{{ old('name') }}"   name="name" type="text"  placeholder="Full Name">
+                                    <input class="mb-0 form-control  @error('name') is-invalid @enderror" value="{{ old('name') }}"   name="name" type="text"  placeholder="Full Name">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6 col-12 mb-20">
                                     <label>Phone Number</label>
-                                    <input class="mb-0  @error('phone') is-invalid @enderror" value="{{ old('phone') }}"  name="phone" type="text" placeholder="Phone Number">
+                                    <input class="mb-0 form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}"  name="phone" type="text" placeholder="Phone Number">
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="col-md-12 mb-20">
                                     <label>Email Address*</label>
-                                    <input class="mb-0  @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email" type="email" placeholder="Email Address">
+                                    <input class="mb-0  form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email" type="email" placeholder="Email Address">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <label>Password</label>
-                                    <input class="mb-0  @error('password') is-invalid @enderror" value="{{ old('password') }}" name="password" type="password" placeholder="Password">
+                                    <input class="mb-0  form-control  @error('password') is-invalid @enderror" value="{{ old('password') }}" name="password" type="password" placeholder="Password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

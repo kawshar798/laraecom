@@ -19,7 +19,7 @@ class BrandController extends Controller
     }
 
     public function store(Request $request){
-        
+
 
         DB::beginTransaction();
        try{
@@ -28,7 +28,7 @@ class BrandController extends Controller
             }else{
                 $brand = new Brand();
             }
-      
+
 
 
         $brand->name = $request->name;
@@ -47,14 +47,14 @@ class BrandController extends Controller
         $brand->status = 'Active';
         $brand->save();
         DB::commit();
-        
+
         $output = ['success' => true,
         'messege'            => "Category Delete success",
     ];
     return $output;
        }catch(Exception $e){
         DB::rollBack();
-       
+
        return $e->getMessage();
        }
     }
@@ -84,7 +84,6 @@ class BrandController extends Controller
         if (file_exists($brand->image)) {
             unlink( $brand->image );
         }
-
         $brand->delete();
         $output = ['success' => true,
             'messege'            => "Brand Delete success",

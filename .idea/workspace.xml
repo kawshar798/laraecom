@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cdee6a52-aac8-4afc-adca-9a03cf21fb6d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userhome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/userhome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/brand/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/brand/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/changepassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/changepassword.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -191,7 +195,12 @@
       <workItem from="1592458061550" duration="2510000" />
       <workItem from="1592471630797" duration="7681000" />
       <workItem from="1592714502626" duration="20000" />
-      <workItem from="1593921114418" duration="4350000" />
+      <workItem from="1593921114418" duration="4448000" />
+      <workItem from="1593939134159" duration="760000" />
+      <workItem from="1593940297934" duration="468000" />
+      <workItem from="1594011829722" duration="2559000" />
+      <workItem from="1594105136868" duration="2857000" />
+      <workItem from="1594114710391" duration="4820000" />
     </task>
     <servers />
   </component>

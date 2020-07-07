@@ -6,7 +6,7 @@
         <h5 class="card-title">Brand List</h5>
         <div class="header-elements">
             <div class="list-icons">
-            
+
                         <a href="javascript:void(0)" class="btn btn-success mb-2" id="create-new-user">Add Brand</a>
                 <a class="list-icons-item" data-action="collapse"></a>
                 <a class="list-icons-item" data-action="reload"></a>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    
+
     <table class="table category-list table-hover">
         <thead>
             <tr>
@@ -63,7 +63,7 @@
             @endforeach
         </tbody>
     </table>
-    
+
      <!-- The Modal for Create -->
      <div class="modal" id="addFees">
                         <div class="modal-dialog">
@@ -138,7 +138,7 @@
             $('.name_modal').val(name);
             $('.id').val(id);
             var category_image = "<img src='"+ '{{asset('/')}}/'+logo+"' height='100' width='100'>";
-            
+
             if(logo){
             $("#modal-input-image").html(category_image);
              }
