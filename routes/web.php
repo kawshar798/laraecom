@@ -120,7 +120,7 @@ Route::group(['as'=>'user.','prefix'=>'user','middleware' => 'auth'],function ()
     Route::get('/order', 'HomeController@userOrder')->name('order');
     Route::get('/profile', 'HomeController@userProfile')->name('profile');
     Route::get('/address', 'HomeController@userAddress')->name('address');
-    Route::get('/change-password', 'HomeController@userChangePassword')->name('chnagepass');
+    Route::any('/change-password', 'HomeController@userChangePassword')->name('chnagepass');
 });
 
 

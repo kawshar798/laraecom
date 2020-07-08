@@ -68,19 +68,30 @@
                                 </div>
 
                                 <div class="box-account box-info">
-                                    <form method="post" name="enq">
+                                    <form method="post" action="{{url('user/change-password')}}">
+                                        @csrf
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label>Current Password <span class="required">*</span></label>
-                                                <input required="" class="form-control" name="password" type="password">
+                                                <input required="" class="form-control @error('currentpassword') is-invalid @enderror" name="currentpassword" type="password">
+                                                @error('currentpassword')
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{  $message }}</strong>
+                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>New Password <span class="required">*</span></label>
-                                                <input required="" class="form-control" name="npassword" type="password">
+                                                <input required="" class="form-control @error('password') is-invalid @enderror" name="password" type="password">
+                                                @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{  $message }}</strong>
+                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>Confirm Password <span class="required">*</span></label>
-                                                <input required="" class="form-control" name="cpassword" type="password">
+                                                <input required="" class="form-control " name="password_confirmation" type="password">
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Save</button>

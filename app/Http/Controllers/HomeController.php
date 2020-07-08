@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsLetter;
+use App\User;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -41,8 +44,45 @@ class HomeController extends Controller
     {
         return view('user.address');
     }
-    public function userChangePassword()
+
+    public function userChangePassword(Request $request)
     {
+        if($request->isMethod('post')){
+            DB::beginTransaction();
+            $this->validate($request,[
+                'currentpassword' => 'required',
+                'password' => 'required|min:6|confirmed',
+                'password_confirmation' => 'required|min:6'
+            ]);
+            $password=Auth::user()->password;
+            $currentpass=$request->currentpassword;
+
+            try{
+                if (Hash::check($currentpass,$password)){
+                    $user=User::find(Auth::id());
+                    $user->password=Hash::make($request->password);
+                    $user->save();
+
+                    $notification=array(
+                        'messege'=>'Your Password change Success',
+                        'alert-type'=>'success'
+                    );
+                    return redirect()->to('user/dashboard')->with($notification);
+
+//            return Redirect()->route('login')->with('Successfully password change');
+                }else{
+
+                    $notification=array(
+                        'messege'=>'Your current password was incorrect',
+                        'alert-type'=>'error'
+                    );
+                    return redirect()->to('user/change-password')->with($notification);
+                }
+            }catch (\Exception $e){
+                return $e->getMessage();
+                DB::rollBack();
+            }
+        }
         return view('user.changepassword');
     }
     public function fontendShow(){
