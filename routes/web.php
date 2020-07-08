@@ -23,6 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@fontendShow')->name('/');
 Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 Route::post('register', 'Auth\RegisterController@userRegister')->name('register');
+Route::any('email/verify', 'Auth\RegisterController@varifyEmail')->name('email.verify');
 Route::group(['prefix'  =>  'admin'], function () {
 
     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');

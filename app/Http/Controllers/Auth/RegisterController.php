@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VarificationEmail;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -87,8 +89,9 @@ class RegisterController extends Controller
                 $user->code     =  $code;
                 $user->status = 0;
                 $user->save();
-            DB::commit();
-                return "ekhn tmk mail verifed korte hobe";
+                DB::commit();
+                Mail::to($user->email)->send(new VarificationEmail($user));
+                return redirect()->to('email/verify');
 
 
 
@@ -97,6 +100,29 @@ class RegisterController extends Controller
             DB::rollBack();
         }
 
+    }
+
+    public  function  varifyEmail(Request  $request){
+        if($request->isMethod('post')){
+           $user =  User::where('code',$request->code)->where('email',$request->email)->first();
+           if($user){
+               $user->status = 1;
+               $user->save();
+               $notification=array(
+                   'messege'=>'Your account is verified,Please login',
+                   'alert-type'=>'success'
+               );
+               return redirect()->route('login')->with($notification);
+           }else{
+               $notification=array(
+                   'messege'=>'Your Email or Verification Code is Invalid',
+                   'alert-type'=>'error'
+               );
+               return redirect()->to('email/verify')->with($notification);
+           }
+
+        }
+        return view('auth.emailVerification');
     }
 //    protected function create(array $data)
 //    {
