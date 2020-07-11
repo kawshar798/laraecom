@@ -12,16 +12,17 @@ use Str;
 class CouponController extends Controller
 {
     //
-    
+
     public function index(){
 
         $coupons = Coupon::get();
+        $nav = "coupon";
         return view( 'admin.coupon.index',compact('coupons'));
     }
 
     public function store(Request $request){
-        
-     
+
+
          $request->id;
         DB::beginTransaction();
        try{
@@ -30,7 +31,7 @@ class CouponController extends Controller
             }else{
                 $coupon = new Coupon();
             }
-      
+
         $coupon->coupon = $request->coupon;
         $coupon->discount = $request->discount;
         $coupon->status = 'Active';
@@ -39,11 +40,11 @@ class CouponController extends Controller
         }else{
             $coupon->created_by =Auth::user()->id;
         }
-        
+
         $coupon->save();
         DB::commit();
         // return "kaj hoice";
-        
+
         $output = ['success' => true,
         'messege'            => "Coupon Create success",
     ];
@@ -51,7 +52,7 @@ class CouponController extends Controller
 
        }catch(Exception $e){
         DB::rollBack();
-       
+
        return $e->getMessage();
        }
     }

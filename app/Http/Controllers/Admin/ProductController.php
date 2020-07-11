@@ -17,13 +17,15 @@ class ProductController extends Controller {
 
     public function index() {
        $products =  Product::get();
-        return view( 'admin.product.index',compact('products') );
+       $nav = "product";
+        return view( 'admin.product.index',compact('products','nav') );
     }
     public function create() {
 
         $categories = Category::where( 'parent_id', 0 )->where( 'status', 'Active' )->get();
         $brands = Brand::where( 'status', 'Active' )->get();
-        return view( 'admin.product.create', compact( 'brands', 'categories' ) );
+        $nav = "product_create";
+        return view( 'admin.product.create', compact( 'brands', 'categories','nav' ) );
     }
 
     public function store( Request $request ) {
@@ -107,20 +109,20 @@ class ProductController extends Controller {
 
     }
 
-   
+
 
         public function edit($id){
             $categories = Category::where( 'parent_id', 0 )->where( 'status', 'Active' )->get();
             $sub_categories = Category::where( 'parent_id', '!=',0 )->where( 'status', 'Active' )->get();
-           
+
             $brands = Brand::where( 'status', 'Active' )->get();
             $product = Product::where('id',$id)->first();
             return view( 'admin.product.edit', compact( 'brands', 'categories','product','sub_categories') );
 
         }
         public function update(Request $request){
-        
-          
+
+
             DB::beginTransaction();
             try {
                 $product = Product::find($request->id);
@@ -144,7 +146,7 @@ class ProductController extends Controller {
                 $product->featured = $request->featured;
                 $product->hot_new = $request->hot_new;
                 $product->description = $request->description;
-    
+
                 $currentDate = Carbon::now()->toDateString();
                 if ( $request->hasFile( 'image_one' ) ) {
                     $image = $request->image_one;
@@ -166,10 +168,10 @@ class ProductController extends Controller {
                     }
                     Image::make( $image )->resize( 1600, 1066 )->save( $file_name );
                     $image->move( $path, $file_name );
-    
+
                     $product->image_two = $path . $file_name;
                 }
-    
+
                 if ( $request->hasFile( 'image_three' ) ) {
                     $image = $request->image_three;
                     $file_name = $product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
@@ -179,22 +181,22 @@ class ProductController extends Controller {
                     }
                     Image::make( $image )->resize( 1600, 1066 )->save( $file_name );
                     $image->move( $path, $file_name );
-    
+
                     $product->image_three = $path . $file_name;
                 }
                 $product->save();
                 DB::commit();
-    
+
                 $notification = [
                     'messege'    => 'Successfully  Product Update',
                     'alert-type' => 'success',
                 ];
                 return Redirect()->route( 'product' )->with( $notification );
-    
+
             } catch ( Exception $e ) {
                 DB::rollBack();
                 return $e->getMessage();
-    
+
             }
         }
 

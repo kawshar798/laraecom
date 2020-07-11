@@ -48,7 +48,7 @@
                 <!-- Main -->
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active">
+                    <a href="index.html" class="nav-link ">
                         <i class="icon-home4"></i>
                         <span>
 									Dashboard
@@ -56,14 +56,51 @@
                     </a>
                 </li>
 
-                <!-- Components -->
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Components</div> <i class="icon-menu" title="Components"></i></li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-grid"></i> <span>Basic components</span></a>
+                <li class="nav-item nav-item-submenu @isset($nav)@if($nav=='category_create' || $nav=='category') nav-item-open nav-item-expanded	 @endif @endisset">
+                    <a href="#" class="nav-link"><i class="icon-grid"></i> <span>Category</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Basic components">
-                        <li class="nav-item"><a href="components_modals.html" class="nav-link">Modals</a></li>
+                        <li class="nav-item "><a href="{{url('admin/category')}}" class="nav-link  @isset($nav)@if($nav=='category') active	 @endif @endisset ">List</a></li>
+                        <li class="nav-item "><a href="{{url('admin/category/create')}}" class="nav-link @isset($nav)@if($nav=='category_create') active	 @endif @endisset ">Create</a></li>
                     </ul>
                 </li>
+
+
+                <li class="nav-item">
+                    <a href="{{url('admin/brand')}}" class="nav-link @isset($nav)@if($nav=='brand') active	 @endif @endisset">
+                        <i class="icon-home4"></i>
+                        <span>Brand</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-item-submenu @isset($nav)@if($nav=='product_create' || $nav=='product') nav-item-open nav-item-expanded	 @endif @endisset">
+                    <a href="#" class="nav-link"><i class="icon-grid"></i> <span>Product</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Basic components">
+                        <li class="nav-item "><a href="{{url('admin/product')}}" class="nav-link  @isset($nav)@if($nav=='product') active	 @endif @endisset ">List</a></li>
+                        <li class="nav-item "><a href="{{url('admin/product/create')}}" class="nav-link @isset($nav)@if($nav=='product_create') active	 @endif @endisset ">Create</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('admin/coupon')}}" class="nav-link @isset($nav)@if($nav=='coupon') active	 @endif @endisset">
+                        <i class="icon-home4"></i>
+                        <span>Coupon</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu @isset($nav)@if($nav=='post_category' || $nav=='post') nav-item-open nav-item-expanded	 @endif @endisset">
+                    <a href="#" class="nav-link"><i class="icon-grid"></i> <span>Post</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Basic components">
+                        <li class="nav-item "><a href="{{url('admin/post/category')}}" class="nav-link  @isset($nav)@if($nav=='post_category') active	 @endif @endisset ">Post Category</a></li>
+                        <li class="nav-item "><a href="{{url('admin/post')}}" class="nav-link @isset($nav)@if($nav=='post') active	 @endif @endisset ">Post</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('admin/newsletter')}}" class="nav-link @isset($nav)@if($nav=='newsletter') active	 @endif @endisset">
+                        <i class="icon-home4"></i>
+                        <span>Newsletter</span>
+                    </a>
+                </li>
+
+
+
 
             </ul>
         </div>

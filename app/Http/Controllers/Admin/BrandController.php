@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Str;
 class BrandController extends Controller
@@ -15,7 +16,8 @@ class BrandController extends Controller
     public function index(){
 
         $brands = Brand::get();
-        return view( 'admin.brand.index',compact('brands'));
+        $nav = 'brand';
+        return view( 'admin.brand.index',compact('brands','nav'));
     }
 
     public function store(Request $request){
@@ -45,6 +47,7 @@ class BrandController extends Controller
             $brand->logo = $path.$file_name;
         }
         $brand->status = 'Active';
+        $brand->created_by = Auth::user()->id;
         $brand->save();
         DB::commit();
 

@@ -87,7 +87,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('delete/{id}','NewsLetterController@destroy')->name('newsletter.destroy');
         });
 
-        //Newsletter Route
+        //Post Category Route
         Route::group(['prefix'=>'post/category'],function(){
             Route::get('/','PostCategoryController@index')->name('post.category.index');
             Route::post('/store','PostCategoryController@store')->name('post.category.store');
@@ -96,7 +96,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::any('delete/{id}','PostCategoryController@destroy')->name('post.category.destroy');
 
         });
-         //Newsletter Route
+         //Post Route
          Route::group(['prefix'=>'post'],function(){
             Route::get('/','PostController@index')->name('post.index');
             Route::post('/store','PostController@store')->name('post.store');

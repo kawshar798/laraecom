@@ -12,7 +12,8 @@ class NewsLetterController extends Controller
 
     public function index(){
         $newsletters = NewsLetter::get();
-        return view( 'admin.newsletter.index',compact('newsletters'));
+        $nav = "newsletter";
+        return view( 'admin.newsletter.index',compact('newsletters','nav'));
     }
     public function destroy( $id ) {
         $newsletters = NewsLetter::find( $id );

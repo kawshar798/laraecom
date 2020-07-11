@@ -15,7 +15,8 @@ class CategoryController extends Controller {
     public function index() {
 
         $categories = Category::all();
-        return view( 'admin.category.index', compact( 'categories' ) );
+        $nav='category';
+        return view( 'admin.category.index', compact( 'categories','nav' ) );
     }
 
     /****
@@ -24,7 +25,7 @@ class CategoryController extends Controller {
     public function create( Request $request ) {
 
         if ( $request->isMethod( 'post' ) ) {
-           
+
 
             if ( $request->id ) {
                 $category = Category::find( $request->id );
@@ -36,7 +37,7 @@ class CategoryController extends Controller {
             }
             DB::beginTransaction();
             try {
-                
+
                 if ( !empty( $request->parent_id ) ) {
                     $category->parent_id = $request->parent_id;
                 } else {
@@ -81,7 +82,7 @@ class CategoryController extends Controller {
                         'alert-type' => 'success',
                     ];
                 }
-                
+
                 return Redirect()->route( 'category.index' )->with( $notification );
 
             } catch ( Exception $e ) {
@@ -96,7 +97,8 @@ class CategoryController extends Controller {
         }
         $parent_categories = Category::where( 'parent_id', 0 )->get();
         // return $parent_categories;
-        return view( 'admin.category.create', compact( 'parent_categories' ) );
+        $nav='category_create';
+        return view( 'admin.category.create', compact( 'parent_categories','nav' ) );
 
     }
 

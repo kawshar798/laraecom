@@ -17,11 +17,12 @@ class PostController extends Controller
 
         $posts = Post::get();
         $categories = PostCategory::where('status','Active')->get();
-        return view( 'admin.post.index',compact('posts','categories'));
+        $nav = "post";
+        return view( 'admin.post.index',compact('posts','categories','nav'));
     }
 
     public function store(Request $request){
-        
+
 
         DB::beginTransaction();
        try{
@@ -48,14 +49,14 @@ class PostController extends Controller
         $post->status = 'Active';
         $post->save();
         DB::commit();
-        
+
         $output = ['success' => true,
         'messege'            => "Post Create success",
     ];
     return $output;
        }catch(Exception $e){
         DB::rollBack();
-       
+
        return $e->getMessage();
        }
     }
