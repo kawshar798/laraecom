@@ -37,7 +37,7 @@ class WishlistController extends Controller
                   'success' => true,
               );
               return $notification;
-//              return redirect()->to('/')->with($notification);
+
 
 
           }

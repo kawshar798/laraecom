@@ -550,7 +550,7 @@
                     success:function (result) {
                         if (result.success == true) {
                             toastr.success(result.messege);
-                            document.getElementById("newsLetterEmail").value='';
+
                         } else {
                             toastr.error(result.messege);
                         }
@@ -558,7 +558,28 @@
 
                 })
             }
-        })
+        });
+
+        $(".add_cart").on('click',function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            if(id){
+                $.ajax({
+                    url: "{{url('add/cart')}}/"+id,
+                    type:"GET",
+                    dataType:'json',
+                    success:function (result) {
+                        if (result.success == true) {
+                            toastr.success(result.messege);
+
+                        } else {
+                            toastr.error(result.messege);
+                        }
+                    }
+
+                })
+            }
+        });
     })
 </script>
 </body>

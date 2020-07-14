@@ -35,7 +35,13 @@ class ProductController extends Controller {
         try {
             $product = new Product();
             $product->name = $request->name;
-            $product->code = $request->code;
+            $code = rand(000000,999999);
+            if($request->code){
+                $product->code = $request->code;
+            }else{
+                $product->code = $code;
+            }
+
             $product->quantity = $request->quantity;
             $product->alert_quantity = $request->alert_quantity;
             $product->category_id = $request->category_id;

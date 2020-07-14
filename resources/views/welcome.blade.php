@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="add-actions">
                                             <ul class="add-actions-link">
-                                                <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                <li class="add-cart active"><a href="#" class="add_cart" data-id="{{$hots_dael->id}}">Add to cart</a></li>
                                                 <li>
                                                     <button class="links-details addWishlist" data-id="{{$hots_dael->id}}"  href="{{url('add/wishlist',$hots_dael->id)}}" title="Wishlist"><i class="fa fa-heart-o"></i></button>
 {{--                                                    <a class="links-details" href="{{url('add/wishlist',$hots_dael->id)}}" title="Wishlist"><i class="fa fa-heart-o"></i></a>--}}

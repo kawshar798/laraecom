@@ -131,3 +131,5 @@ Route::group(['as'=>'user.','prefix'=>'user','middleware' => 'auth'],function ()
 //Newsletter store for front-end
 Route::post('/newsletter/store', 'HomeController@newsletterStore')->name('home');
 Route::get('add/wishlist/{id}','WishlistController@addWishlist');
+Route::get('add/cart/{id}','CartController@addToCart');
+Route::get('check','CartController@check');
