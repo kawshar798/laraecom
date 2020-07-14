@@ -482,6 +482,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!-- Main/Activator js -->
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
+
 <script>
         @if(Session::has('messege'))
     var type="{{Session::get('alert-type','info')}}"
@@ -534,6 +535,31 @@
             },
         });
     });
+
+
+
+
+    $(document).ready(function () {
+        $(".addWishlist").on('click',function () {
+            var id = $(this).data('id');
+            if(id){
+                $.ajax({
+                    url: "{{url('add/wishlist/')}}/"+id,
+                    type:"GET",
+                    dataType:'json',
+                    success:function (result) {
+                        if (result.success == true) {
+                            toastr.success(result.messege);
+                            document.getElementById("newsLetterEmail").value='';
+                        } else {
+                            toastr.error(result.messege);
+                        }
+                    }
+
+                })
+            }
+        })
+    })
 </script>
 </body>
 

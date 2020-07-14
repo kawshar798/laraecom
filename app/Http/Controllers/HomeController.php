@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsLetter;
+use App\Models\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Exception;
@@ -27,6 +28,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function fontendShow(){
+        $featureds   = Product::where('status','Active')->where('featured',1)->get();
+        $trends      = Product::where('status','Active')->where('trend',1)->get();
+        $best_rateds = Product::where('status','Active')->where('best_rated',1)->get();
+        $hots_daels  = Product::where('status','Active')->where('hot_deal',1)->orderBy('id','desc')->limit(3)->get();
+
+
+        return view('welcome',compact('hots_daels','best_rateds','trends','featureds'));
+    }
+
     public function index()
     {
         return view('user.userhome');
@@ -84,9 +96,6 @@ class HomeController extends Controller
             }
         }
         return view('user.changepassword');
-    }
-    public function fontendShow(){
-        return view('welcome');
     }
 
     public function newsletterStore(Request $request){

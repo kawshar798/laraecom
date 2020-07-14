@@ -52,6 +52,8 @@ class ProductController extends Controller {
             $product->best_rated = $request->best_rated;
             $product->trend = $request->trend;
             $product->featured = $request->featured;
+            $product->hot_deal = $request->hot_deal;
+            $product->buy_get_one = $request->buy_get_one;
             $product->hot_new = $request->hot_new;
             $product->description = $request->description;
 
@@ -145,6 +147,8 @@ class ProductController extends Controller {
                 $product->trend = $request->trend;
                 $product->featured = $request->featured;
                 $product->hot_new = $request->hot_new;
+                $product->hot_deal = $request->hot_deal;
+                $product->buy_get_one = $request->buy_get_one;
                 $product->description = $request->description;
 
                 $currentDate = Carbon::now()->toDateString();

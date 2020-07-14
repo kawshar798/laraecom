@@ -22,8 +22,12 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@fontendShow')->name('/');
 Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
-Route::post('register', 'Auth\RegisterController@userRegister')->name('register');
+Route::post('user/register', 'Auth\RegisterController@userRegister')->name('user.register');
 Route::any('email/verify', 'Auth\RegisterController@varifyEmail')->name('email.verify');
+Route::get('register',function (){
+    return redirect()->to('login');
+});
+
 Route::group(['prefix'  =>  'admin'], function () {
 
     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
@@ -126,3 +130,4 @@ Route::group(['as'=>'user.','prefix'=>'user','middleware' => 'auth'],function ()
 
 //Newsletter store for front-end
 Route::post('/newsletter/store', 'HomeController@newsletterStore')->name('home');
+Route::get('add/wishlist/{id}','WishlistController@addWishlist');

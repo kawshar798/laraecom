@@ -18,14 +18,26 @@
                         <ul class="ht-menu">
                             <!-- Begin Setting Area -->
                             <li>
-                                <div class="ht-setting-trigger"><span>Setting</span></div>
-                                <div class="setting ht-setting">
-                                    <ul class="ht-setting-list">
-                                        <li><a href="login-register.html">My Account</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="login-register.html">Sign In</a></li>
-                                    </ul>
-                                </div>
+                                @guest
+                                    <div class="ht-setting-trigger"><span>Sign In/Sign Up</span></div>
+                                    <div class="setting ht-setting">
+                                        <ul class="ht-setting-list">
+                                            <li><a href="login-register.html">My Account</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="login-register.html">Sign In</a></li>
+                                        </ul>
+                                    </div>
+                                    @else
+                                    <div class="ht-setting-trigger"><span>Profile</span></div>
+                                    <div class="setting ht-setting">
+                                        <ul class="ht-setting-list">
+                                            <li><a href="login-register.html">Profile Info</a></li>
+                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="{{route('logout')}}">Log Out</a></li>
+                                        </ul>
+                                    </div>
+                                    @endguest
+
                             </li>
                             <!-- Setting Area End Here -->
                             <!-- Begin Currency Area -->

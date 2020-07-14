@@ -32,6 +32,7 @@ class CreateProductsTable extends Migration
             $table->boolean('main_slider')->default(0)->nullable();
             $table->boolean('mid_slider')->default(0)->nullable();
             $table->boolean('hot_deal')->default(0)->nullable();
+            $table->boolean('buy_get_one')->default(0)->nullable();
             $table->boolean('best_rated')->default(0)->nullable();
             $table->boolean('hot_new')->default(0)->nullable();
             $table->boolean('trend')->default(0)->nullable();

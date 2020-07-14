@@ -65,7 +65,7 @@
 												<div class="form-group">
 													<label>Sub Category Name:</label>
 													<select name="sub_category_id" class="form-control form-control-select2" data-fouc>
-													
+
 													@foreach($sub_categories as $category)
 														<option value="{{$category->id}}" @isset($product->category_id){{$product->category_id==$category->id?'selected':''}}@endisset>{{$category->name}}</option>
 														@endforeach
@@ -104,7 +104,7 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Product Size:</label>
-													
+
 													<input type="text"  name="size" class="form-control tokenfield" value="{{$product->size}}"  data-fouc placeholder="Enter Product Size">
 												</div>
 											</div>
@@ -112,7 +112,7 @@
 												<div class="form-group">
 													<label>Product Color:</label>
 													<input type="text"  name="color" value="{{$product->color}}" class="form-control tokenfield"  data-fouc>
-												
+
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -133,7 +133,7 @@
 												<div class="form-group">
 													<label>Image One:</label>
 													<input type="file" name="image_one" value="{{$product->image_one}}" placeholder="Kopyov" class="form-control form-input-styled" onchange="readURL(this)">
-													
+
 
 													@if($product->image_one)
 													<img src="{{asset($product->image_one)}}"  style="height: 80px;width:80px" id="one"/>
@@ -147,7 +147,7 @@
 													@if($product->image_two)
 													<img src="{{asset($product->image_two)}}"  style="height: 80px;width:80px" id="two"/>
 													@endif
-													
+
 												</div>
 											</div>
 											<div class="col-md-4">
@@ -157,7 +157,7 @@
 													@if($product->image_three)
 													<img src="{{asset($product->image_three)}}"  style="height: 80px;width:80px" id="three"/>
 													@endif
-													
+
 												</div>
 											</div>
 											<div class="col-md-4">
@@ -182,7 +182,7 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-													
+
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox"  value="1"  @isset($product->best_rated){{$product->best_rated==1?'checked':''}} @endisset    name="best_rated" class="form-check-input-styled"  data-fouc>
@@ -204,7 +204,7 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-												
+
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox" value="1"  @isset($product->featured){{$product->featured==1?'checked':''}} @endisset   name="featured" class="form-check-input-styled"  data-fouc>
@@ -216,7 +216,6 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-													
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox" value="1"  @isset($product->hot_new){{$product->hot_new==1?'checked':''}} @endisset  name="hot_new" class="form-check-input-styled"  data-fouc>
@@ -225,6 +224,26 @@
 												</div>
 												</div>
 											</div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" value="1"  @isset($product->hot_deal){{$product->hot_deal==1?'checked':''}} @endisset  name="hot_deal" class="form-check-input-styled"  data-fouc>
+                                                            Hot Deal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" value="1"  @isset($product->buy_get_one){{$product->buy_get_one==1?'checked':''}} @endisset  name="buy_get_one" class="form-check-input-styled"  data-fouc>
+                                                            Buy One get One
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
 
 										</div>
 										<button type="submit" class="btn btn-success">Update Product</button>
@@ -270,22 +289,22 @@ CKEDITOR.replace('editor-full', {
 
 
 	</script>
-	
-													
+
+
 	<script type="text/javascript">
       $(document).ready(function(){
      $('select[name="category_id"]').on('change',function(){
           var category_id = $(this).val();
           if (category_id) {
-            
+
             $.ajax({
               url: "{{ url('admin/get/subcategory/') }}/"+category_id,
               type:"GET",
               dataType:"json",
-              success:function(data) { 
+              success:function(data) {
               var d =$('select[name="sub_category_id"]').empty();
               $.each(data, function(key, value){
-              
+
               $('select[name="sub_category_id"]').append('<option value="'+ value.id + '">' + value.name + '</option>');
 
               });

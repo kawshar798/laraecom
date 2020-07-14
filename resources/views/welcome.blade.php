@@ -1,12 +1,4 @@
 @php
-$featureds = DB::table('products')->where('status','Active')->where('featured',1)->get();
-$trends = DB::table('products')->where('status','Active')->where('trend',1)->get();
-$best_rateds = DB::table('products')->where('status','Active')->where('best_rated',1)->get();
-
-
-$hots_daels = DB::table('products')->where('products.status','Active')->where('products.hot_deal',1)->orderBy('id','desc')->limit(3)
-->get();
-
 
 
 @endphp
@@ -79,7 +71,7 @@ $hots_daels = DB::table('products')->where('products.status','Active')->where('p
                                         <div class="product_desc_info">
                                             <div class="product-review">
                                                 <h5 class="manufacturer">
-                                                    <a href="shop-left-sidebar.html">{{$hots_dael->category_id}}</a>
+                                                    <a href="shop-left-sidebar.html">{{isset($hots_dael->brand->name)?$hots_dael->brand->name:''}}</a>
                                                 </h5>
                                                 <div class="rating-box">
                                                     <ul class="rating">
@@ -108,7 +100,10 @@ $hots_daels = DB::table('products')->where('products.status','Active')->where('p
                                         <div class="add-actions">
                                             <ul class="add-actions-link">
                                                 <li class="add-cart active"><a href="#">Add to cart</a></li>
-                                                <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
+                                                <li>
+                                                    <button class="links-details addWishlist" data-id="{{$hots_dael->id}}"  href="{{url('add/wishlist',$hots_dael->id)}}" title="Wishlist"><i class="fa fa-heart-o"></i></button>
+{{--                                                    <a class="links-details" href="{{url('add/wishlist',$hots_dael->id)}}" title="Wishlist"><i class="fa fa-heart-o"></i></a>--}}
+                                                </li>
                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                             </ul>
                                         </div>

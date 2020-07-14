@@ -72,7 +72,7 @@
 
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                    <form  action="{{ url('register') }}" method="POST">
+                    <form  action="{{ url('user/register') }}" method="POST">
                         @csrf
                         <div class="login-form">
                             <h4 class="login-title">Register</h4>

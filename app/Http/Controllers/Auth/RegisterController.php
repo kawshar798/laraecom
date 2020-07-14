@@ -93,9 +93,6 @@ class RegisterController extends Controller
                 Mail::to($user->email)->send(new VarificationEmail($user));
                 return redirect()->to('email/verify');
 
-
-
-
         }catch (\Exception $e){
             DB::rollBack();
         }

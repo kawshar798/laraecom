@@ -64,8 +64,8 @@
 												<div class="form-group">
 													<label>Sub Category Name:</label>
 													<select data-placeholder="Select your country" name="sub_category_id" class="form-control form-control-select2" data-fouc>
-													
-														
+
+
 						                            </select>
 												</div>
 											</div>
@@ -101,7 +101,7 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>Product Size:</label>
-													
+
 													<input type="text"  name="size" class="form-control tokenfield"  data-fouc placeholder="Enter Product Size">
 												</div>
 											</div>
@@ -109,7 +109,7 @@
 												<div class="form-group">
 													<label>Product Color:</label>
 													<input type="text"  name="color" class="form-control tokenfield"  data-fouc>
-												
+
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -169,7 +169,7 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-													
+
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox"  value="1"name="best_rated" class="form-check-input-styled"  data-fouc>
@@ -191,7 +191,7 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-												
+
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox" value="1" name="featured" class="form-check-input-styled"  data-fouc>
@@ -203,7 +203,6 @@
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
-													
 													<div class="form-check">
 											<label class="form-check-label">
 											<input type="checkbox" value="1" name="hot_new" class="form-check-input-styled"  data-fouc>
@@ -212,6 +211,26 @@
 												</div>
 												</div>
 											</div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" value="1" name="hot_deal" class="form-check-input-styled"  data-fouc>
+                                                            Hot Deal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" value="1" name="buy_get_one" class="form-check-input-styled"  data-fouc>
+                                                            Buy One get One
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
 
 										</div>
 										<button type="submit">Add Product</button>
@@ -257,22 +276,22 @@ CKEDITOR.replace('editor-full', {
 
 
 	</script>
-	
-													
+
+
 	<script type="text/javascript">
       $(document).ready(function(){
      $('select[name="category_id"]').on('change',function(){
           var category_id = $(this).val();
           if (category_id) {
-            
+
             $.ajax({
               url: "{{ url('admin/get/subcategory/') }}/"+category_id,
               type:"GET",
               dataType:"json",
-              success:function(data) { 
+              success:function(data) {
               var d =$('select[name="sub_category_id"]').empty();
               $.each(data, function(key, value){
-              
+
               $('select[name="sub_category_id"]').append('<option value="'+ value.id + '">' + value.name + '</option>');
 
               });
