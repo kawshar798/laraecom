@@ -19,10 +19,14 @@ class Product extends Model
 //        return $this->belongsTo('App\Models\Category');
         return $this->belongsTo(Category::class,'category_id','id');
     }
+    public function subcategory(){
+//        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class,'sub_category_id','id');
+    }
 
     public function brand(){
 //        return $this->belongsTo('App\Models\Brand');
-        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
+        return $this->belongsTo(Brand::class,'brand_id','id');
 
     }
 }

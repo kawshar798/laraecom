@@ -169,12 +169,22 @@
                     <div class="header-middle-right">
                         <ul class="hm-menu">
                             <!-- Begin Header Middle Wishlist Area -->
-                            <li class="hm-wishlist">
-                                <a href="wishlist.html">
-                                    <span class="cart-item-count wishlist-item-count">0</span>
-                                    <i class="fa fa-heart-o"></i>
-                                </a>
-                            </li>
+
+                            @guest()
+
+                                @else
+                                @php
+                                    $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
+
+                                    @endphp
+                                <li class="hm-wishlist">
+                                    <a href="wishlist.html">
+                                        <span class="cart-item-count wishlist-item-count">{{count($wishlist)}}</span>
+                                        <i class="fa fa-heart-o"></i>
+                                    </a>
+                                </li>
+                                @endguest
+
                             <!-- Header Middle Wishlist Area End Here -->
                             <!-- Begin Header Mini Cart Area -->
                             <li class="hm-minicart">

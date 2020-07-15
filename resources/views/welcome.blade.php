@@ -62,7 +62,7 @@
                                 <!-- single-product-wrap start -->
                                 <div class="single-product-wrap">
                                     <div class="product-image">
-                                        <a href="single-product.html">
+                                        <a href="{{url('product/details/'.$hots_dael->id.'/'.$hots_dael->name)}}">
                                             <img src="{{asset($hots_dael->image_one)}}" alt="{{$hots_dael->name}}">
                                         </a>
                                         <span class="sticker">New</span>

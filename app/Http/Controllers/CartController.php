@@ -23,6 +23,8 @@ class CartController extends Controller
             $data['price'] = $product->selling_price;
             $data['weight'] = 1;
             $data['options']['image'] = $product->image_one;
+            $data['options']['color'] = '';
+            $data['options']['size'] = '';
             Cart::add($data);
             $notification=array(
                 'messege'=>'Successfully added on your Cart',
@@ -37,6 +39,8 @@ class CartController extends Controller
             $data['price'] = $product->discount_price;
             $data['weight'] = 1;
             $data['options']['image'] = $product->image_one;
+            $data['options']['color'] = '';
+            $data['options']['size'] = '';
             Cart::add($data);
             $notification=array(
                 'messege'=>'Successfully added on your Cart',

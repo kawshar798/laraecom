@@ -133,3 +133,4 @@ Route::post('/newsletter/store', 'HomeController@newsletterStore')->name('home')
 Route::get('add/wishlist/{id}','WishlistController@addWishlist');
 Route::get('add/cart/{id}','CartController@addToCart');
 Route::get('check','CartController@check');
+Route::get('product/details/{id}/{product_name}','ProductController@productDetails');
