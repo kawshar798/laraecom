@@ -80,6 +80,9 @@
                                             <span> {!! str_limit($product->description,$limit=1200) !!}</span>
                                 </p>
                             </div>
+
+                            <form action="{{url('product/add/cart',$product->id)}}" class="cart-quantity" method="post" >
+                                @csrf
            <div class="d-flex">
                @if($product->size)
                    <div class="product-variants">
@@ -110,11 +113,9 @@
                    @else
 
                    @endif
-
-
            </div>
                             <div class="single-add-to-cart">
-                                <form action="#" class="cart-quantity">
+
                                     <div class="quantity">
                                         <label>Quantity</label>
                                         <div class="cart-plus-minus">
@@ -124,8 +125,9 @@
                                         </div>
                                     </div>
                                     <button class="add-to-cart" type="submit">Add to cart</button>
-                                </form>
+
                             </div>
+                            </form>
                             <div class="product-additional-info pt-25">
                                 <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
                                 <div class="product-social-sharing pt-25">

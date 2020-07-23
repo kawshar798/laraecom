@@ -134,3 +134,7 @@ Route::get('add/wishlist/{id}','WishlistController@addWishlist');
 Route::get('add/cart/{id}','CartController@addToCart');
 Route::get('check','CartController@check');
 Route::get('product/details/{id}/{product_name}','ProductController@productDetails');
+Route::post('product/add/cart/{id}','ProductController@productCartAdd');
+Route::get('show/cart','CartController@showCart');
+Route::get('remove/cart/{id}','CartController@removeCart');
+Route::post('update/cart/product','CartController@udpateCartProductQty');

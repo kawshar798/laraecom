@@ -190,41 +190,52 @@
                             <li class="hm-minicart">
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
-                                    <span class="item-text">£160
-                                                    <span class="cart-item-count">2</span>
+                                    <span class="item-text">৳{{Cart::subtotal()}}
+                                                    <span class="cart-item-count">{{ Cart::count() }}</span>
                                                 </span>
                                 </div>
                                 <span></span>
                                 <div class="minicart">
+                                     @php
+                                     $carts = Cart::content();
+
+                                     @endphp
+
+
                                     <ul class="minicart-product-list">
-                                        <li>
-                                            <a href="single-product.html" class="minicart-product-image">
-                                                <img src="images/product/small-size/3.jpg" alt="cart products">
-                                            </a>
-                                            <div class="minicart-product-details">
-                                                <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                <span>£80 x 1</span>
-                                            </div>
-                                            <button class="close">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <a href="single-product.html" class="minicart-product-image">
-                                                <img src="images/product/small-size/4.jpg" alt="cart products">
-                                            </a>
-                                            <div class="minicart-product-details">
-                                                <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                <span>£80 x 1</span>
-                                            </div>
-                                            <button class="close">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </li>
+
+                                        @foreach($carts as $cart)
+                                            <li>
+                                                <a href="single-product.html" class="minicart-product-image">
+                                                    <img src="{{asset($cart->options->image)}}" alt="cart products">
+                                                </a>
+                                                <div class="minicart-product-details">
+                                                    <h6><a href="single-product.html">{{ $cart->name }}</a></h6>
+                                                    <span>৳{{ $cart->price }} x {{ $cart->qty }}</span>
+                                                </div>
+                                                <a href="{{url('remove/cart/'.$cart->rowId)}}" class="close">
+                                                    <i class="fa fa-close"></i>
+
+                                                </a>
+                                            </li>
+                                            @endforeach
+
+{{--                                        <li>--}}
+{{--                                            <a href="single-product.html" class="minicart-product-image">--}}
+{{--                                                <img src="images/product/small-size/4.jpg" alt="cart products">--}}
+{{--                                            </a>--}}
+{{--                                            <div class="minicart-product-details">--}}
+{{--                                                <h6><a href="single-product.html">Aenean eu tristique</a></h6>--}}
+{{--                                                <span>£80 x 1</span>--}}
+{{--                                            </div>--}}
+{{--                                            <button class="close">--}}
+{{--                                                <i class="fa fa-close"></i>--}}
+{{--                                            </button>--}}
+{{--                                        </li>--}}
                                     </ul>
-                                    <p class="minicart-total">SUBTOTAL: <span>£160</span></p>
+                                    <p class="minicart-total">SUBTOTAL: <span>৳{{Cart::subtotal()}}</span></p>
                                     <div class="minicart-button">
-                                        <a href="checkout.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                        <a href="{{asset(url('show/cart'))}}" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                             <span>View Full Cart</span>
                                         </a>
                                         <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
