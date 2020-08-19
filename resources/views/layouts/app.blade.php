@@ -490,6 +490,8 @@
                 $("#pcat").text(data.product_cat);
                 $("#psubcat").text(data.product_sub_cat);
                 $("#pbrand").text(data.product_brand);
+                $("#pbrand").attr('href',data.product_brand);
+                $("#pwhishlist").attr('data-id',data.product.id);
                 $("#pstock").text(data.product.quantity);
                 $("#pprice").text(data.product.selling_price);
                 $("#pid").val(data.product.id);
