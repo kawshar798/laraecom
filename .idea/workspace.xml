@@ -2,15 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdee6a52-aac8-4afc-adca-9a03cf21fb6d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laraecom.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laraecom.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f099240ab982.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f099240e4997.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f0992c19dc32.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f0992c1d4c48.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09932ea6bac.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09932eebf5f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09933fb74d5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09934007fd3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09934ce5b28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f09934d36c1b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f19111419bcd.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/-5f19111454247.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-11-5f09924049d1b.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-11-5f0992c1667d9.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-11-5f09932e5edcf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-11-5f09933f70525.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-11-5f09934c9f3af.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-07-23-5f191113a10a2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front-end/product_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-end/product_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/1234rg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/Admin 12345667.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/Admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/Kawshar Ahmed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/kawshar10987.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/rgkl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/backend/assets/uploads/image/brand/test1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd272220c57.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd2723bd10f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd27258ca43.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd279e8b462.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd279f7b945.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd27a0a9eaf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd2840b3ef7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd2841baafb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/-5ecd2842eb90e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/image/product/2020-05-27-5ecdfca7ca0c6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -226,6 +257,9 @@
       <workItem from="1594775901940" duration="6135000" />
       <workItem from="1594870380954" duration="1321000" />
       <workItem from="1595477940435" duration="8495000" />
+      <workItem from="1597763739604" duration="1417000" />
+      <workItem from="1597810933319" duration="43000" />
+      <workItem from="1597812699678" duration="8431000" />
     </task>
     <servers />
   </component>

@@ -137,4 +137,6 @@ Route::get('product/details/{id}/{product_name}','ProductController@productDetai
 Route::post('product/add/cart/{id}','ProductController@productCartAdd');
 Route::get('show/cart','CartController@showCart');
 Route::get('remove/cart/{id}','CartController@removeCart');
+Route::get('cart/product/view/{id}','CartController@cartProductView');
 Route::post('update/cart/product','CartController@udpateCartProductQty');
+Route::post('product/add/cart','CartController@addProductInCart');

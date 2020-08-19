@@ -29,8 +29,6 @@ class ProductController extends Controller {
     }
 
     public function store( Request $request ) {
-        //    return  $request->all();
-
         DB::beginTransaction();
         try {
             $product = new Product();
@@ -41,7 +39,6 @@ class ProductController extends Controller {
             }else{
                 $product->code = $code;
             }
-
             $product->quantity = $request->quantity;
             $product->alert_quantity = $request->alert_quantity;
             $product->category_id = $request->category_id;
@@ -62,12 +59,11 @@ class ProductController extends Controller {
             $product->buy_get_one = $request->buy_get_one;
             $product->hot_new = $request->hot_new;
             $product->description = $request->description;
-
             $currentDate = Carbon::now()->toDateString();
             if ( $request->hasFile( 'image_one' ) ) {
                 $image = $request->image_one;
                 $file_name = $currentDate.$product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                $path = 'public/upload/image/product/';
+                $path = 'public/backend/assets/uploads/image/product/';
                 if ( !file_exists( $path ) ) {
                     mkdir( $path, 0777, true );
                 }
@@ -78,26 +74,25 @@ class ProductController extends Controller {
             if ( $request->hasFile( 'image_two' ) ) {
                 $image = $request->image_two;
                 $file_name = $product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                $path = 'public/upload/image/product/';
+                $path = 'public/backend/assets/uploads/image/product/';
                 if ( !file_exists( $path ) ) {
                     mkdir( $path, 0777, true );
                 }
                 Image::make( $image )->resize( 1600, 1066 )->save( $file_name );
                 $image->move( $path, $file_name );
-
                 $product->image_two = $path . $file_name;
             }
 
             if ( $request->hasFile( 'image_three' ) ) {
                 $image = $request->image_three;
                 $file_name = $product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                $path = 'public/upload/image/product/';
+//                $path = 'public/upload/image/product/';
+                $path = 'public/backend/assets/uploads/image/product/';
                 if ( !file_exists( $path ) ) {
                     mkdir( $path, 0777, true );
                 }
                 Image::make( $image )->resize( 1600, 1066 )->save( $file_name );
-                $image->move( $path, $file_name );
-
+                $image->move($path, $file_name );
                 $product->image_three = $path . $file_name;
             }
             $product->save();
@@ -112,7 +107,6 @@ class ProductController extends Controller {
         } catch ( Exception $e ) {
             DB::rollBack();
             return $e->getMessage();
-
         }
 
     }
@@ -129,8 +123,6 @@ class ProductController extends Controller {
 
         }
         public function update(Request $request){
-
-
             DB::beginTransaction();
             try {
                 $product = Product::find($request->id);
@@ -156,12 +148,11 @@ class ProductController extends Controller {
                 $product->hot_deal = $request->hot_deal;
                 $product->buy_get_one = $request->buy_get_one;
                 $product->description = $request->description;
-
                 $currentDate = Carbon::now()->toDateString();
                 if ( $request->hasFile( 'image_one' ) ) {
                     $image = $request->image_one;
                     $file_name = $currentDate.$product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                    $path = 'public/upload/image/product/';
+                    $path = 'public/backend/assets/uploads/image/product/';
                     if ( !file_exists( $path ) ) {
                         mkdir( $path, 0777, true );
                     }
@@ -172,7 +163,7 @@ class ProductController extends Controller {
                 if ( $request->hasFile( 'image_two' ) ) {
                     $image = $request->image_two;
                     $file_name = $product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                    $path = 'public/upload/image/product/';
+                    $path = 'public/backend/assets/uploads/image/product/';
                     if ( !file_exists( $path ) ) {
                         mkdir( $path, 0777, true );
                     }
@@ -185,13 +176,12 @@ class ProductController extends Controller {
                 if ( $request->hasFile( 'image_three' ) ) {
                     $image = $request->image_three;
                     $file_name = $product->slug . "-" . uniqid() . "." . $image->getClientOriginalExtension();
-                    $path = 'public/upload/image/product/';
+                    $path = 'public/backend/assets/uploads/image/product/';
                     if ( !file_exists( $path ) ) {
                         mkdir( $path, 0777, true );
                     }
                     Image::make( $image )->resize( 1600, 1066 )->save( $file_name );
                     $image->move( $path, $file_name );
-
                     $product->image_three = $path . $file_name;
                 }
                 $product->save();
