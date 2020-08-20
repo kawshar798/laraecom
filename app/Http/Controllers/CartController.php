@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -52,10 +53,6 @@ class CartController extends Controller
 
     }
 
-    public  function  check(){
-        $content = Cart::content();
-        return $content;
-    }
 
     public function  showCart(){
         $contents = Cart::content();
@@ -146,6 +143,21 @@ class CartController extends Controller
                 );
                 return redirect()->back()->with($notification);
             }
+        }
+    }
+
+    public function  userCheckOut(){
+
+        if(Auth::check()){
+            $contents = Cart::content();
+            return view('front-end.checkout',compact('contents'));
+        }else{
+            $notification=array(
+                'messege'=>'Login Your Account First',
+                'alert-type'=>'warning',
+//                'warning' => true,
+            );
+            return redirect()->to('login')->with($notification);
         }
     }
 }

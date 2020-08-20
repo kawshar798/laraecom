@@ -89,7 +89,7 @@
                                         <li>Subtotal <span>৳{{Cart::subtotal()}}</span></li>
                                         <li>Total <span>৳{{Cart::total()}} <span style="font-size: 10px"> (+tax)</span></span></li>
                                     </ul>
-                                    <a href="#">Proceed to checkout</a>
+                                    <a href="{{url('user/checkout')}}">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

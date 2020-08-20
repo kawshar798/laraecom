@@ -309,7 +309,19 @@
     <link rel="stylesheet" href="{{asset('public/frontend/assets/css/responsive.css')}}">
     <!-- Modernizr js -->
     <script src="{{asset('public/frontend/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
-
+        <style>
+            .p_available {
+                color: #fff;
+                background: green;
+                padding: 2px 7px;
+                border-radius: 2px;
+            }   .p_stock_out {
+                color: #fff;
+                background: red;
+                padding: 2px 7px;
+                border-radius: 2px;
+            }
+        </style>
         @stack('css')
 </head>
 <body>
@@ -492,7 +504,16 @@
                 $("#pbrand").text(data.product_brand);
                 $("#pbrand").attr('href',data.product_brand);
                 $("#pwhishlist").attr('data-id',data.product.id);
-                $("#pstock").text(data.product.quantity);
+
+                if(data.product.quantity > 0){
+                    $("#pstock").text('Available');
+                    $("#pstock").attr('class','p_available');
+                }else{
+                    $("#pstock").text('Stock Out');
+                    $("#pstock").attr('class','p_stock_out');
+                }
+
+
                 $("#pprice").text(data.product.selling_price);
                 $("#pid").val(data.product.id);
 

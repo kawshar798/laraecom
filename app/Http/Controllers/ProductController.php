@@ -38,8 +38,7 @@ class ProductController extends Controller
                 'messege'=>'Successfully added on your Cart',
                 'success' => true,
             );
-            return $notification;
-
+            return  redirect()->back()->with($notification);
         }else{
             $data['id'] = $product->id;
             $data['name'] = $product->name;
@@ -54,7 +53,7 @@ class ProductController extends Controller
                 'messege'=>'Successfully added on your Cart',
                 'success' => true,
             );
-            return $notification;
+            return  redirect()->back()->with($notification);
         }
     }
 }

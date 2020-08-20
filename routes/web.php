@@ -140,3 +140,4 @@ Route::get('remove/cart/{id}','CartController@removeCart');
 Route::get('cart/product/view/{id}','CartController@cartProductView');
 Route::post('update/cart/product','CartController@udpateCartProductQty');
 Route::post('product/add/cart','CartController@addProductInCart');
+Route::get('user/checkout','CartController@userCheckOut');
