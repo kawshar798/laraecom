@@ -12,15 +12,10 @@ class WishlistController extends Controller
     //
 
     public function  addWishlist($id){
-
         $user_id = Auth::id();
         $product_id = $id;
-
-
         if(Auth::check()){
-
           $exist =  Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->first();
-
           if($exist){
               $notification=array(
                   'messege'=>'This Product already has in your Wishlist',
@@ -48,7 +43,6 @@ class WishlistController extends Controller
             );
             return $notification;
         }
-
     }
 
     public  function userWishlist(){
@@ -59,7 +53,6 @@ class WishlistController extends Controller
                ->select('products.*','wishlists.user_id')
                ->where('wishlists.user_id',$user_id)
                ->get();
-
             return view('front-end.wishlist',compact('products'));
         }else{
             $notification=array(

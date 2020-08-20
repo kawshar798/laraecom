@@ -32,7 +32,8 @@
                                     <div class="setting ht-setting">
                                         <ul class="ht-setting-list">
                                             <li><a href="login-register.html">Profile Info</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
+                                            <li><a href="{{url('user/checkout')}}">Checkout</a></li>
+                                            <li><a href="{{url('user/wishlist')}}">Wishlist</a></li>
                                             <li><a href="{{route('logout')}}">Log Out</a></li>
                                         </ul>
                                     </div>
@@ -171,14 +172,13 @@
                             <!-- Begin Header Middle Wishlist Area -->
 
                             @guest()
-
                                 @else
                                 @php
                                     $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
 
                                     @endphp
                                 <li class="hm-wishlist">
-                                    <a href="wishlist.html">
+                                    <a href="{{url('user/wishlist')}}">
                                         <span class="cart-item-count wishlist-item-count">{{count($wishlist)}}</span>
                                         <i class="fa fa-heart-o"></i>
                                     </a>
