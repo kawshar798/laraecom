@@ -141,3 +141,5 @@ Route::get('cart/product/view/{id}','CartController@cartProductView');
 Route::post('update/cart/product','CartController@udpateCartProductQty');
 Route::post('product/add/cart','CartController@addProductInCart');
 Route::get('user/checkout','CartController@userCheckOut');
+Route::get('user/wishlist','WishlistController@userWishlist');
+Route::get('remove/product/wishlist/{id}','WishlistController@userWishlistRemove');

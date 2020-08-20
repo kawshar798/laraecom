@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WishlistController extends Controller
 {
@@ -37,11 +38,7 @@ class WishlistController extends Controller
                   'success' => true,
               );
               return $notification;
-
-
-
           }
-
         }else{
 
             $notification=array(
@@ -52,6 +49,34 @@ class WishlistController extends Controller
             return $notification;
         }
 
+    }
 
+    public  function userWishlist(){
+        if(Auth::check()){
+           $user_id = Auth::id();
+           $products = DB::table('wishlists')
+               ->join('products','wishlists.product_id','products.id')
+               ->select('products.*','wishlists.user_id')
+               ->where('wishlists.user_id',$user_id)
+               ->get();
+
+            return view('front-end.wishlist',compact('products'));
+        }else{
+            $notification=array(
+                'messege'=>'Login Your Account First',
+                'alert-type'=>'warning',
+            );
+            return redirect()->to('login')->with($notification);
+        }
+    }
+
+    public  function  userWishlistRemove($id){
+        $wishlist = Wishlist::find($id);
+        $wishlist->delete();
+        $notification=array(
+            'messege'=>'Product remove success from Wishlist',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }
