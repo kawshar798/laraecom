@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use App\Models\Product;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -158,6 +160,28 @@ class CartController extends Controller
 //                'warning' => true,
             );
             return redirect()->to('login')->with($notification);
+        }
+    }
+
+    public  function  applyCoupon(Request $request){
+        $check = Coupon::where('coupon',$request->coupon_code)->where('status','Active')->first();
+        if($check){
+            Session::put('coupon',[
+               'discount' => $check->discount
+            ]);
+            $notification=array(
+                'messege'=>'Your Coupon apply Success',
+                'alert-type'=>'success',
+//                'warning' => true,
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            $notification=array(
+                'messege'=>'Your Coupon is Invalid',
+                'alert-type'=>'error',
+//                'warning' => true,
+            );
+            return redirect()->back()->with($notification);
         }
     }
 }

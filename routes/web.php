@@ -143,3 +143,4 @@ Route::post('product/add/cart','CartController@addProductInCart');
 Route::get('user/checkout','CartController@userCheckOut');
 Route::get('user/wishlist','WishlistController@userWishlist');
 Route::get('remove/product/wishlist/{id}','WishlistController@userWishlistRemove');
+Route::post('apply/coupon','CartController@applyCoupon');

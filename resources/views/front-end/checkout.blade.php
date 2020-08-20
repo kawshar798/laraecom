@@ -1,5 +1,7 @@
 @php
-
+$setting = DB::table('settings')->first();
+$shipping_charge = $setting->shipping_charge;
+$vat = $setting->vat;
     @endphp
 
 
@@ -70,15 +72,30 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
+
                             <div class="coupon-all">
-                                <div class="coupon">
-                                    <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                    <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-                                </div>
+
+                                @if(Session::has('coupon'))
+                                    @else
+                                    <form  action="{{url('apply/coupon')}}" method="post">
+                                        @csrf
+                                        <div class="coupon">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+
+                                        </div>
+                                    </form>
+                                    @endif
+
+
+
+
+
                                 <div class="coupon2">
                                     <input class="button" name="update_cart" value="Update cart" type="submit">
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="row">
@@ -87,10 +104,26 @@
                                 <h2>Cart totals</h2>
                                 <ul>
                                     <li>Subtotal <span>৳{{Cart::subtotal()}}</span></li>
-                                    <li>Coupon <span>৳{{Cart::total()}} <span style="font-size: 10px"></span></span></li>
-                                    <li>Shipping Charge <span>৳{{Cart::total()}} <span style="font-size: 10px"></span></span></li>
-                                    <li>Vat <span>৳{{Cart::total()}} <span style="font-size: 10px"> </span></span></li>
-                                    <li>Total <span>৳{{Cart::total()}} <span style="font-size: 10px"> </span></span></li>
+                                    <li>Coupon <span>৳ @if(Session::has('coupon'))
+                                                {{ Session::get('coupon')['discount'] }}
+                                            @else
+                                                0.00
+                                            @endif<span style="font-size: 10px">
+                                                (discount)
+                                            </span></span></li>
+                                    <li>Shipping Charge <span>৳{{isset($shipping_charge)?$shipping_charge:0.00}} </span></li>
+                                    <li>Vat <span>৳{{isset($vat)?$vat:0.00}} </span></li>
+                                    <li>Total
+                                        @if(Session::has('coupon'))
+                                            @php
+                                               $discount  =  Session::get('coupon')['discount']
+                                                @endphp
+                                            @else
+                                            @php
+                                                $discount = 0;
+                                            @endphp
+                                            @endif
+                                        <span>৳{{ (Cart::subtotal() + $vat + $shipping_charge) - $discount }} <span style="font-size: 10px"></span></span></li>
                                 </ul>
                                 <a href="{{url('user/checkout')}}">Proceed to checkout</a>
                             </div>
