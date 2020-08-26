@@ -50,7 +50,6 @@ class BrandController extends Controller
         $brand->created_by = Auth::user()->id;
         $brand->save();
         DB::commit();
-
         $output = ['success' => true,
         'messege'            => "Category Delete success",
     ];

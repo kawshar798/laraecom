@@ -104,8 +104,6 @@
                                         <button type="submit" class="btn btn-primary" id="btn-save"></button>
                                     </div>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
@@ -138,11 +136,9 @@
             $('.name_modal').val(name);
             $('.id').val(id);
             var category_image = "<img src='"+ '{{asset('/')}}/'+logo+"' height='100' width='100'>";
-
             if(logo){
             $("#modal-input-image").html(category_image);
              }
-
             $('.k').trigger("reset");
             $('#modalTitile').html("Edit Brand");
             $('#btn-save').html("Update Brand");
