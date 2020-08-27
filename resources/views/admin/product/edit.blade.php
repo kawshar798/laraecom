@@ -78,7 +78,7 @@
 													<select name="brand_id" data-placeholder="Select your country" class="form-control form-control-select2" data-fouc>
 						                            	<option value=""></option>
 						                                @foreach($brands as $brand)
-														<option value="{{$brand->id}}" @isset($product->category_id){{$product->brand_id==$brand->id?'selected':''}}@endisset>{{$brand->name}}</option>
+														<option value="{{$brand->id}}" @isset($product->brand_id){{$product->brand_id==$brand->id?'selected':''}}@endisset>{{$brand->name}}</option>
 														@endforeach
 						                            </select>
 												</div>
